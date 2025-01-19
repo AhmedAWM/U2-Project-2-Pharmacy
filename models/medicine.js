@@ -19,7 +19,7 @@ const medicineSchema = new pharmasys.Schema(
         min: 0,
         max: 1000,
     },
-    expirationDate: 
+    expiryDate: 
     {
       type: Date, 
     },
