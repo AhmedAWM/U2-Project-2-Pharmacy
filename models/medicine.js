@@ -1,26 +1,25 @@
-const pharmasys = require("mongoose");
+const mongoose = require("mongoose");
 
-const pharmacySchema = new pharmasys.Schema(
+const medicineSchema = new pharmasys.Schema(
+    medicinName:
     {
+        type: String,
+        required: true,
+    },
+    commercialName:
+    {
+        type: String,
+        required: true,
+    },
     price: 
     {
         type: Number,
         required: true,
-        min: 0
-    },
-    commercialName:
-    {
-        type: Number,
-        required: true,
-    } ,
-    medicinName:
-    {
-        type: Number,
-        required: true,
-    } 
-
+        min: 0,
+        max: 1000,
+    }
 });
 
-const Pharmacy = pharmasys.model("Pharmacy", pharmacySchema);
+const Medicine = mongoose.model("Medicine", medicineSchema);
 
-module.exports = Pharmacy;
+module.exports = Medicine;
