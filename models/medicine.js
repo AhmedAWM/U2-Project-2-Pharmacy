@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const medicineSchema = new pharmasys.Schema(
+{
     medicinName:
     {
         type: String,
