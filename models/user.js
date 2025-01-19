@@ -18,13 +18,11 @@ const userSchema = new mongoose.Schema(
     type: String,
     required: true,
   },
-  role: 
+  isDoctor: 
   {
-    type: String,
-    enum: ['customer', 'pharmacist', 'admin'],
-    default: 'customer',
+    type: Boolean,
   },
-  patientAge:
+  Age:
   {
     type:Number,
     required: true,
