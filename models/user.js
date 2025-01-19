@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema(
   {
     type: Boolean,
   },
-  Age:
+  age:
   {
     type:Number,
     required: true,
