@@ -30,10 +30,6 @@ const prescriptionSchema = new mongoose.Schema
     type: Date,
     default: Date.now,
   },
-  expirationDate: 
-  {
-    type: Date, 
-  },
   instructionsForThePation: 
   {
     type: String,

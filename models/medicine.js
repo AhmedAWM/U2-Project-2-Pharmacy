@@ -18,7 +18,11 @@ const medicineSchema = new pharmasys.Schema(
         required: true,
         min: 0,
         max: 1000,
-    }
+    },
+    expirationDate: 
+    {
+      type: Date, 
+    },
 });
 
 const Medicine = mongoose.model("Medicine", medicineSchema);
