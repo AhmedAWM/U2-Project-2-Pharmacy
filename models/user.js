@@ -24,6 +24,11 @@ const userSchema = new mongoose.Schema(
     enum: ['customer', 'pharmacist', 'admin'],
     default: 'customer',
   },
+  patientAge:
+  {
+    type:Number,
+    required: true,
+  },
 });
 
 const User = mongoose.model('User', userSchema);
