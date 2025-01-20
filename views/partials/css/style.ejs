@@ -1,6 +1,68 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 
+    body{
+   background: url(/assets/img/bg.svg) no-repeat center center fixed; 
+   background-size: cover;
+   background-color: #001220;
+}
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+/*navbar hamburger icon*/
+.ham {
+   cursor: pointer;
+   -webkit-tap-highlight-color: transparent;
+   transition: transform 400ms;
+   -moz-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+ }
+ .hamRotate.active {
+   transform: rotate(45deg);
+ }
+ .hamRotate180.active {
+   transform: rotate(180deg);
+ }
+ .line {
+   fill:none;
+   transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+   stroke:white;
+   stroke-width:5.5;
+   stroke-linecap:round;
+ }
+
+
+ .ham3 .top {
+   stroke-dasharray: 40 130;
+ }
+ .ham3 .middle {
+   stroke-dasharray: 40 140;
+ }
+ .ham3 .bottom {
+   stroke-dasharray: 40 205;
+ }
+ .ham3.active .top {
+   stroke-dasharray: 75 130;
+   stroke-dashoffset: -63px;
+ }
+ .ham3.active .middle {
+   stroke-dashoffset: -102px;
+ }
+ .ham3.active .bottom {
+   stroke-dasharray: 110 205;
+   stroke-dashoffset: -86px;
+ }
+
+
+
+
+ 
+
     #cont1 {
         /*background-color: rgba(255, 255, 255, 0.168);  
           backdrop-filter: blur(20px);
@@ -46,7 +108,7 @@
     @media (max-width: 768px) {
 
         body {
-            background: url(./assets/img/bg100.svg) no-repeat center center fixed;
+            background: url("/assets/img/bg100.svg") no-repeat center center fixed;
             background-size: cover;
 
         }
@@ -197,4 +259,28 @@
 
 
     }
+
+    #title_span{
+    background-color: #f3ec78;
+    background: linear-gradient(
+        60deg,
+        #f79533,
+        #f37055,
+        #ef4e7b,
+        #a166ab,
+        #5073b8,
+        #1098ad,
+        #07b39b,
+        #6fba82
+      );
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+}
+
+
+
+
 </style>
