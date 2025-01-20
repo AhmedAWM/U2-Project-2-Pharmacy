@@ -41,6 +41,10 @@ mongoose
 // Routes and files
 app.use("/auth", authController);
 
+app.get("/", (req, res) => {
+    res.render("home.ejs");
+});
+
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });
