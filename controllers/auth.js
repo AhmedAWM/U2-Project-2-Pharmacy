@@ -16,6 +16,36 @@ router.get("/signin", (request, response) => {
     }
 });
 
+router.post('/signin', async (request, response) => {
+  try {
+    const signinInfo = request.body;
+    const userExists = await User.findOne({ email: signinInfo.email });
+
+    if(!userExists) {
+      response.send("Login failed!");
+      return;
+    }
+
+    const signinPassword = bcrypt.compareSync(signinInfo.password, userExists.password);
+
+    if(!signinPassword) {
+      response.send("Login failed!");
+      return;
+    }
+
+    // If all above is valid, create login session
+    request.session.user = {
+      name: userExists.name,
+      email: userExists.email,
+      _id: userExists._id,
+    };
+
+    response.redirect("/");
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 // Signup page
 router.get("/signup", (request, response) => {
     if (request.session.user) {
