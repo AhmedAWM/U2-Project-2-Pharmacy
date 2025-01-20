@@ -8,58 +8,58 @@ const User = require("../models/user");
 
 // Routes
 // Signin page
-router.get("/signin", (request, response) => {
-    if (request.session.user) {
-      response.redirect("../../"); // Go to homepage
+router.get("/signin", (req, res) => {
+    if (req.session.user) {
+      res.redirect("../../"); // Go to homepage
     } else {
-      response.render("../auth/signin.ejs", { user: null });
+      res.render("../auth/signin.ejs", { user: null });
     }
 });
 
 // Signin
-router.post('/signin', async (request, response) => {
+router.post('/signin', async (req, res) => {
   try {
-    const signinInfo = request.body;
+    const signinInfo = req.body;
     const userExists = await User.findOne({ email: signinInfo.email });
 
     if(!userExists) {
-      response.send("Login failed!");
+      res.send("Login failed!");
       return;
     }
 
     const signinPassword = bcrypt.compareSync(signinInfo.password, userExists.password);
 
     if(!signinPassword) {
-      response.send("Login failed!");
+      res.send("Login failed!");
       return;
     }
 
     // If all above is valid, create login session
-    request.session.user = {
+    req.session.user = {
       name: userExists.name,
       email: userExists.email,
       _id: userExists._id,
     };
 
-    response.redirect("/");
-  } catch (e) {
-    console.log(e);
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
   }
 });
 
 // Signup page
-router.get("/signup", (request, response) => {
-    if (request.session.user) {
-      response.redirect("../../"); // Go to homepage
+router.get("/signup", (req, response) => {
+    if (req.session.user) {
+      res.redirect("../../"); // Go to homepage
     } else {
-      response.render("../auth/signup.ejs", { user: null });
+      res.render("../auth/signup.ejs", { user: null });
     }
 });
 
 // Create new user
 router.post("/signup", async (request, response) => {
     try {
-      const signupInfo = request.body;
+      const signupInfo = req.body;
       const userExists = await User.findOne({ email: signupInfo.email });
 
         // Check if the passwords matches
@@ -84,18 +84,18 @@ router.post("/signup", async (request, response) => {
     
         // Redirect to signin page
         response.redirect("/auth/signin");
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
 });
 
 // Signout
-router.get("/signout", (request, response) => {
+router.get("/signout", (req, response) => {
     try {
-      request.session.destroy();
-      response.redirect("/");
-    } catch (e) {
-      console.log(e);
+      req.session.destroy();
+      res.redirect("/");
+    } catch (error) {
+      console.log(error);
     }
 });
 
