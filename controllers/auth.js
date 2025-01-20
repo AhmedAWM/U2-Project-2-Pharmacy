@@ -7,7 +7,7 @@ const router = express.Router();
 const User = require("../models/user");
 
 // Routes
-// Signin
+// Signin page
 router.get("/signin", (request, response) => {
     if (request.session.user) {
       response.redirect("../../"); // Go to homepage
@@ -16,6 +16,7 @@ router.get("/signin", (request, response) => {
     }
 });
 
+// Signin
 router.post('/signin', async (request, response) => {
   try {
     const signinInfo = request.body;
