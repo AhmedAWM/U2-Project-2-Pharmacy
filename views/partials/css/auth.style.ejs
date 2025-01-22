@@ -1,5 +1,172 @@
 <style>
-    *{
+    body {
+        background: url(/assets/img/bg.svg) no-repeat center center fixed;
+        background-size: cover;
+        background-color: #001220;
+    }
+
+    .LogIn__container {
+
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 100px;
+        font-family: 'poppins', sans-serif;
+    }
+
+    .LogIn__contact_box {
+        background-color: white;
+        max-width: 850px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+        border-radius: 20px;
+    }
+
+    .LogIn__left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1px;
+        height: 100%;
+    }
+
+    .LogIn__lefth3 {
+        font-size: 4rem;
+        font-family: 'lobsterTwoReg', sans-serif;
+    }
+
+    .LogIn__right {
+        padding: 25px 40px;
+    }
+
+    .LogIn__h2 {
+        position: relative;
+        padding: 0 0 20px;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+    }
+
+    .LogIn__h2:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        height: 4px;
+        width: 50px;
+        border-radius: 2px;
+        background-color: #312954;
+    }
+
+    .LogIn__field {
+        width: 100%;
+        border: 2px solid rgba(0, 0, 0, 0);
+        outline: none;
+        background-color: rgba(230, 230, 230, 0.6);
+        padding: 0.5rem 1rem;
+        font-size: 1.1rem;
+        margin-bottom: 22px;
+        transition: 0.3s;
+    }
+
+    .LogIn__field:hover {
+        background-color: #e6e6e6;
+    }
+
+    .LogIn__f1 {
+        min-height: 150px;
+    }
+
+    .LogIn__btn1 {
+        width: 100%;
+        padding: 0.5rem 1rem;
+        background-color: #312954;
+        color: #fff;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 15px;
+        outline: none;
+        cursor: pointer;
+        transition: 0.3s;
+        font-family: 'ibmMed', sans-serif;
+        text-align: center;
+    }
+
+    .LogIn__btn2 {
+        width: 100%;
+        padding: 0.5rem 1rem;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 15px;
+        outline: none;
+        cursor: pointer;
+        transition: 0.3s;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+        color: #312954;
+        background-color: #fff;
+    }
+
+    .LogIn__btn2:hover {
+        background-color: rgba(209, 209, 209, 0.6);
+    }
+
+    .LogIn__field:focus {
+        border: 2px solid #9c95b9;
+        background-color: #fff;
+    }
+
+    input,
+    .LogIn__f1,
+    button {
+        border-radius: 0.8rem;
+        text-align: start;
+    }
+
+    .LogIn__rowDiv {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .transparentMode .LogIn__container {
         background-color: red;
+        backdrop-filter: blur(17px);
+        -webkit-backdrop-filter: blur(17px);
+    }
+
+    .transparentMode .LogIn__lefth3 {
+        color: #fff;
+    }
+
+    .whiteMode {
+        background-color: blue;
+    }
+
+    @media screen and (max-width: 880px) {
+        .LogIn__contact_box {
+            grid-template-columns: 2fr;
+        }
+
+        .LogIn__left {
+            height: 200px;
+        }
+
+        .LogIn__container {
+            padding: 20px 20px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .LogIn__lefth3 {
+            font-size: 2.5rem;
+        }
     }
 </style>
