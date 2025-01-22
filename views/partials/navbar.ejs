@@ -1,12 +1,15 @@
 <!--Navbar-->
 <div id="navbr" class="navbar navbar-expand-md navbar-dark text-white p-3 fixed-top">
   <div id="cont1" class="container">
+
+
+
+
     <div class="mx-lg-5 mx-md-4 mx-sm-4 mx-4 text-center d-flex align-items-center justify-content-center">
       <a href="#" class="m-0 text-center navbar-brand">
         <span id="brand">Pill Box <span style="font-weight: 400;">™</span></span>
       </a>
     </div>
-
 
 
     <div>
@@ -22,34 +25,29 @@
     </div>
 
 
-
     <div class="collapse navbar-collapse" id="mainmenu">
       <ul id="uli" class="navbar-nav text-center ms-auto d-flex align-items-center my-3 my-sm-3 my-md-0 my-lg-0">
-        <li class="nav-item px-2 py-sm-2 py-md-2 mt-3 mt-sm-3 mt-md-0 mt-lg-0"><a
-            href="assets/pages/services/accounts.html" class="nav-link">Medicines</a></li>
-        <li class="nav-item px-2 py-sm-2 py-md-2"><a href="assets/pages/404/404.html" class="nav-link">Pharmacists</a>
-        </li>
-        <li class="nav-item px-2 py-sm-2 py-md-2"><a href="assets/pages/services/cards/cards.html"
-            class="nav-link">About Us</a></li>
-        <li class="nav-item px-2 py-sm-2 py-md-2"><a href="assets/pages/404/404.html" class="nav-link">Sign Out</a>
-        </li>
-        <!-- <li id="langs_ul" class="nav-item dropdown px-2  py-sm-2 py-md-2 mb-3 mb-sm-3 mb-md-0 mb-lg-0">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Languages</a>
-          <ul style="background-color: rgba(255, 255, 255, 0.168);  
-                             backdrop-filter: blur(20px);
-                             border-radius: 15px;
-                             z-index: 100;                                 
-                             font-family: 'Poppins', sans-serif;                                 
-                  " class="dropdown-menu shadow my-2 my-lg-1 my-xlg-1">
-            <li><a id="eng" style="font-family: 'Tajawal', sans-serif; color:#ffffff;"
-                class="dropdown-item text-center py-3" href="assets/pages/languages/arabic.html">العربية</a></li>
-            <li><a id="fra" style="color:#ffffff;" class="dropdown-item text-center py-3"
-                href="assets/pages/languages/french.html">Française</a></li>
-          </ul>
-        </li> -->
+        <% if (user) { %>
+          <li class="nav-item px-2 py-sm-2 py-md-2 mt-3 mt-sm-3 mt-md-0 mt-lg-0"><a
+              href="assets/pages/services/accounts.html" class="nav-link">Medicines</a></li>
+          <li class="nav-item px-2 py-sm-2 py-md-2"><a href="assets/pages/404/404.html" class="nav-link">Pharmacists</a>
+          </li>
+          <li class="nav-item px-2 py-sm-2 py-md-2"><a href="/auth/signout" class="nav-link">Sign Out</a>
+            <li class="nav-item px-2 py-sm-2 py-md-2"><a href="assets/pages/services/cards/cards.html" class="nav-link">About Us</a></li>
+            <% } else { %>
+          <li class="nav-item px-2 py-sm-2 py-md-2 mt-3 mt-sm-3 mt-md-0 mt-lg-0"><a href="#services" class="nav-link">Our Services</a></li>          
+          <li class="nav-item px-2 py-sm-2 py-md-2"><a href="#why-pill-box" class="nav-link">Why Pill Box™
+              ?</a>
+          </li>
+          <li class="nav-item px-2 py-sm-2 py-md-2"><a href="/auth/signup" class="nav-link">Sign Up</a>
+          <li class="nav-item px-2 py-sm-2 py-md-2"><a href="assets/pages/services/cards/cards.html" class="nav-link">About Us</a></li>
+            <% } %>
+          </li>
       </ul>
-
     </div>
+
+
+
   </div>
 </div>
 <!--Navbar-->

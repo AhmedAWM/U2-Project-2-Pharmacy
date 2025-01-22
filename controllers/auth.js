@@ -48,7 +48,7 @@ router.post('/signin', async (req, res) => {
 });
 
 // Signup page
-router.get("/signup", (req, response) => {
+router.get("/signup", (req, res) => {
     if (req.session.user) {
       res.redirect("../../"); // Go to homepage
     } else {
