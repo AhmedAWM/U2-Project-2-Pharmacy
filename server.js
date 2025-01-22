@@ -49,6 +49,8 @@ app.get("/", (req, res) => {
     res.render("home.ejs");
 });
 
+app.get("/medicines", medicineController);
+
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });
