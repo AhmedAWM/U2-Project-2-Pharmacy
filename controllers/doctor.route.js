@@ -8,7 +8,7 @@ router.get("/", async (req, res) =>
         const medicines = await Medicine.find();
         res.render("medicine.ejs", { medicines });
     } 
-    catch (error) 
+    catch (error)
     {
         console.error(error);
         res.status(500).send("Server Error");
@@ -33,5 +33,4 @@ router.get("/:medicineId", async (req, res) =>
         res.status(500).send("Error fetching medicine details");
     }
 });
-
 module.exports = router;
