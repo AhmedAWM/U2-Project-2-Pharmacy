@@ -25,7 +25,9 @@
 
         <%- include('./partials/navbar') %>
 
-
+<% if(user) { %>
+    <%- include('./medicines/home') %>
+<% } else { %>
         <!-- Welcome -->
         <section id="welcome" class="py-5">
             <div id="welcome_cont" class="container">
@@ -146,7 +148,7 @@
         </div>
     </section>
     <!--Why PillBox™?-->
-    
+    <% } %>
     
 
         <script>
