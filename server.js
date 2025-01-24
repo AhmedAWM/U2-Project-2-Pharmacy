@@ -7,7 +7,8 @@ const session = require("express-session");
 
 // Import controllers
 const authController = require("./controllers/auth");
-const medicineController = require("./controllers/auth");
+const medicineController = require("./controllers/medicine.route");
+const doctorController = require("./controllers/doctor.route")
 //const presController = require('./controllers/pres');
 
 // Inizializations
@@ -16,7 +17,7 @@ dotenv.config();
 
 // Models
 const User = require("./models/user");
-
+const Medicine = require("./models/medicine");
 // Middlewares
 app.use(express.static("public")); // Load images and static files in pages with "public" directory
 app.use(express.urlencoded({ extended: false })); // Allow to transfer the objects to another route through request.body
@@ -45,11 +46,25 @@ app.use(passUserToView)
 
 app.use("/auth", authController);
 
-app.get("/", (req, res) => {
-    res.render("home.ejs");
+app.get("/", async(req, res) => {
+    // This code makes sure that a signed-in user wont see the welcome page, 
+    // since the welcome page is for guest users only.    
+  try 
+  {
+      const medicines = await Medicine.find();
+      const user = req.session.user;
+
+      res.render("home.ejs",{ medicines: medicines, user: user });
+  } 
+  catch (error) 
+  {
+      console.log(error);
+  }
 });
 
-app.get("/medicines", medicineController);
+app.use("/medicines", medicineController);
+
+app.use("/doctors", doctorController);
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);

@@ -19,11 +19,46 @@
     <script src="https://kit.fontawesome.com/f5852314e7.js" crossorigin="anonymous"></script>
     <!--Font awsome kit-->
     
-    </head>
+    </head> 
 
     <body>
 
         <%- include('../partials/navbar') %>
+
+
+        
+        <h1>Welcome <%= user.name %>! </h1>
+        <h2>Here are your medicines:</h2>
+
+        <ul>
+            <% medicines.forEach(medicine => { %>
+                <li>
+                    <h3>
+                        <%= medicine.medicinName %>
+                    </h3>
+                </li>
+                <% }) %>
+        </ul>
+        <a href="/medicines/new">Add New Medicine</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

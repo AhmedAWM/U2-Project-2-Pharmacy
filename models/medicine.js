@@ -23,6 +23,7 @@ const medicineSchema = new mongoose.Schema(
     {
       type: Date, 
     },
+    // We must add an OWNER here, in order to show medicines that belong to a specific user
 });
 
 const Medicine = mongoose.model("Medicine", medicineSchema);
