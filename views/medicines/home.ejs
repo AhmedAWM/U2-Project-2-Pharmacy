@@ -27,35 +27,85 @@
 
 
         
-        <h1>Welcome <%= user.name %>! </h1>
-        <h2>Here are your medicines:</h2>
+       
 
         <ul>
             <% medicines.forEach(medicine => { %>
                 <li>
                     <h3>
                         <%= medicine.medicinName %>
+                        <% if(user.isDoctor) { %>
+                            <a href="">Edit</a> <a href="">Delete</a>
+                        <% } %>
                     </h3>
                 </li>
                 <% }) %>
         </ul>
 
-
-        <div class="row row-whith-wide-cards d-flex justify-content-center text-center py-0 py-md-2 py-lg-2">
-
-        <div id="h10" class="hidden col col-12 col-lg-4 col-md-6 col-sm-12 py-3">
-            <div class="card h-100 shadow" id="classic">
-                <img src="img/classic.jpg" id="classic_img" class="card-img-top">
-                <div class="card-body">
-                  <h3 class="card-title py-3">Classic</h3>
-                  <hr id="hr_classic">
-                  <p class="card-text pt-3 px-4 px-sm-4 px-md-4 px-lg-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <button class="bn632-hover bn25">Take me there!</button>
+        <section id="Categories" class="py-5">
+            <div class="container">    
+                <h1>Welcome <%= user.name %>! </h1>
+                <h2>Here are your medicines:</h2>                     
+                        <div class="row row-whith-wide-cards d-flex justify-content-center text-center py-0 py-md-2 py-lg-2">
+                            <div id="h10" class="hidden col col-12 col-lg-4 col-md-6 col-sm-12 py-3">
+                                <div class="card h-100 shadow" id="classic">
+                                    <img src="img/classic.jpg" id="classic_img" class="card-img-top">
+                                    <div class="card-body">
+                                    <h3 class="card-title py-3">Medicine Name</h3>
+                                    <hr id="hr_classic">
+                                    <p class="card-text pt-3 px-4 px-sm-4 px-md-4 px-lg-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <button class="bn632-hover bn25">Take me there!</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="h10" class="hidden col col-12 col-lg-4 col-md-6 col-sm-12 py-3">
+                                <div class="card h-100 shadow" id="classic">
+                                    <img src="img/classic.jpg" id="classic_img" class="card-img-top">
+                                    <div class="card-body">
+                                    <h3 class="card-title py-3">Medicine Name</h3>
+                                    <hr id="hr_classic">
+                                    <p class="card-text pt-3 px-4 px-sm-4 px-md-4 px-lg-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <button class="bn632-hover bn25">Take me there!</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="h10" class="hidden col col-12 col-lg-4 col-md-6 col-sm-12 py-3">
+                                <div class="card h-100 shadow" id="classic">
+                                    <img src="img/classic.jpg" id="classic_img" class="card-img-top">
+                                    <div class="card-body">
+                                    <h3 class="card-title py-3">Medicine Name</h3>
+                                    <hr id="hr_classic">
+                                    <p class="card-text pt-3 px-4 px-sm-4 px-md-4 px-lg-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <button class="bn632-hover bn25">Take me there!</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="h10" class="hidden col col-12 col-lg-4 col-md-6 col-sm-12 py-3">
+                                <div class="card h-100 shadow" id="classic">
+                                    <img src="img/classic.jpg" id="classic_img" class="card-img-top">
+                                    <div class="card-body">
+                                    <h3 class="card-title py-3">Medicine Name</h3>
+                                    <hr id="hr_classic">
+                                    <p class="card-text pt-3 px-4 px-sm-4 px-md-4 px-lg-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <button class="bn632-hover bn25">Take me there!</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="h10" class="hidden col col-12 col-lg-4 col-md-6 col-sm-12 py-3">
+                                <div class="card h-100 shadow" id="classic">
+                                    <img src="img/classic.jpg" id="classic_img" class="card-img-top">
+                                    <div class="card-body">
+                                    <h3 class="card-title py-3">Medicine Name</h3>
+                                    <hr id="hr_classic">
+                                    <p class="card-text pt-3 px-4 px-sm-4 px-md-4 px-lg-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <button class="bn632-hover bn25">Take me there!</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                 </div>
-              </div>
-        </div>
-
-        </div>
+                </section>
 
         <% if(user.isDoctor) { %><a href="/medicines/new">Add New Medicine</a><% } %>
 

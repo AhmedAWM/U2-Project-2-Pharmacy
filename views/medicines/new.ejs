@@ -27,16 +27,19 @@ integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLAS
     <h1>Welcom</h1>
     <h1>Medicines prescribed by your doctor</h1>
 
-    <form action="/users/:userId/foods" method="POST">
+    <form action="/medicines/new/" method="POST">
 
-        <label for="name">Name of Medicine</label>
-        <input required type="text" id="name" name="medicinName">
+        <label for="name">Commercial Name</label>
+        <input required type="text" id="commercialName" name="commercialName">
         <br>
-        <label for="name">commercialName of Medicine</label>
-        <input required type="text" id="name" name="commercialName">
+        <label for="name">Medical name</label>
+        <input required type="text" id="medicinName" name="medicinName">
         <br>
         <label for="name">Price</label>
-        <input required type="number" id="name" name="price">
+        <input required type="number" id="price" name="price">
+        <br>
+        <label for="image">Image URL</label>
+        <input required type="text" id="image" name="image">
         <br>
         <label for="name">Expiry Date</label>
         <input required type="date" id="name" name="expiryDate">
