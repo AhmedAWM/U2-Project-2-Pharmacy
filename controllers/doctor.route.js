@@ -6,7 +6,7 @@ router.get("/", async (req, res) =>
     try 
     {
         const medicines = await Medicine.find();
-        res.render("medicine.ejs", { medicines });
+        res.render("doctors/home.ejs", { medicines });
     } 
     catch (error) 
     {

@@ -6,9 +6,10 @@ router.get("/", async (req, res) =>
     try 
     {
         const medicines = await Medicine.find();
-        
+        const user = req.session.user;
+
         console.log(medicines);
-        res.render("medicine.ejs",{ medicines: medicines });
+        res.render("home.ejs",{ medicines: medicines, user: user });
     } 
     catch (error) 
     {
@@ -18,7 +19,8 @@ router.get("/", async (req, res) =>
 }); 
 router.get("/new", (req, res) => 
 {
-    res.render("medicine/new.ejs");
+    res.render("new.ejs");
+
 });
 // Sharifas tring to show the details of the medicen 
 
@@ -75,4 +77,3 @@ router.get("/:medicineId", async (req, res) =>
 // });
 
 module.exports = router;
-
