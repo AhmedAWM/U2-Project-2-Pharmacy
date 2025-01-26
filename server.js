@@ -27,6 +27,8 @@ app.use(session({
     saveUninitialized: true
   })
 );
+const isSignedIn = require("./middleware/is-signed-in.js"); 
+const passUserToView = require("./middleware/pass-user-to-view.js"); // Pass "user model" to all views, important for the navbar functionality
 
 // DB Connection
 mongoose
@@ -39,6 +41,8 @@ mongoose
   });
 
 // Routes and files
+app.use(passUserToView)
+
 app.use("/auth", authController);
 
 app.get("/", (req, res) => {

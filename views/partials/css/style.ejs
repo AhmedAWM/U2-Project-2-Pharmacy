@@ -264,14 +264,8 @@
     background-color: #f3ec78;
     background: linear-gradient(
         60deg,
-        #f79533,
-        #f37055,
-        #ef4e7b,
-        #a166ab,
-        #5073b8,
-        #1098ad,
-        #07b39b,
-        #6fba82
+       
+        #008aff, #86d472
       );
     background-size: 100%;
     -webkit-background-clip: text;
@@ -282,5 +276,93 @@
 
 
 
+ 
+@media (max-width: 768px) {
+            body{
+                background: url('../../../assets/img/bg100.svg') no-repeat center center fixed; 
+                background-size: cover;
+            }
+        }
 
+
+        @font-face {
+            font-family: tajawalBold;
+            src: url('../../fonts/Tajawal-Bold.ttf');
+        }
+
+
+
+        @font-face {
+            font-family: poppins;
+            src: url('../../fonts/Poppins-Regular.ttf');
+        }
+
+
+
+        @media (max-width: 991px) {
+            #crd2{
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+
+            #crd3{
+                border-top-right-radius: 0px;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                border-top: 0px;
+            }
+        }
+    
+
+        @media (max-width: 768px) {
+            #crd1{
+                border-top-right-radius: 20px;
+                border-bottom-left-radius: 0px;  
+                border-bottom: none;              
+            }
+
+            #crd2{
+                border-radius: 0px;
+                border: none;
+            }
+            
+        }
+
+
+        .bn39 {
+  background-image: linear-gradient(135deg, #008aff, #86d472);
+  border-radius: 6px;
+  font-family: 'poppins', sans-serif;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: block;
+  height: 50px;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 4px;
+  position: relative;
+  text-decoration: none;
+  width: 8em;
+  z-index: 2;;
+}
+
+.bn39:hover {
+  color: #fff;
+}
+
+.bn39 .bn39span {
+  align-items: center;
+  background: #001220;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  transition: background 0.5s ease;
+  width: 100%;
+}
+
+.bn39:hover .bn39span {
+  background: transparent;
+}
 </style>
