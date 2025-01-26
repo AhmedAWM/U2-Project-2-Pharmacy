@@ -39,7 +39,7 @@
                 </li>
                 <% }) %>
         </ul>
-        <a href="/medicines/new">Add New Medicine</a>
+        <% if(user.isDoctor) { %><a href="/medicines/new">Add New Medicine</a><% } %>
 
        
 

@@ -42,6 +42,7 @@ router.post("/signin", async (req, res) => {
       name: userExists.name,
       email: userExists.email,
       _id: userExists._id,
+      isDoctor: userExists.isDoctor
     };
 
     res.redirect("/");
