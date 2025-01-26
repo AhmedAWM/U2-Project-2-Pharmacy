@@ -8,6 +8,8 @@ router.get("/", async (req, res) =>
         const medicines = await Medicine.find();
         const user = req.session.user;
 
+        console.log(user);
+
         console.log(medicines);
         res.render("home.ejs",{ medicines: medicines, user: user });
     } 
