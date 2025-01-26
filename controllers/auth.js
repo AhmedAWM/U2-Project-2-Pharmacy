@@ -9,28 +9,31 @@ const User = require("../models/user");
 // Routes
 // Signin page
 router.get("/signin", (req, res) => {
-    if (req.session.user) {
-      res.redirect("../../"); // Go to homepage
-    } else {
-      res.render("../auth/signin.ejs", { user: null });
-    }
+  if (req.session.user) {
+    res.redirect("../../"); // Go to homepage
+  } else {
+    res.render("../auth/signin.ejs", { user: null });
+  }
 });
 
 // Signin
-router.post('/signin', async (req, res) => {
+router.post("/signin", async (req, res) => {
   try {
     const signinInfo = req.body;
     const userExists = await User.findOne({ email: signinInfo.email });
 
-    if(!userExists) {
-      res.send("Login failed!");
+    if (!userExists) {
+      res.send("Login failed! User does not Exists");
       return;
     }
 
-    const signinPassword = bcrypt.compareSync(signinInfo.password, userExists.password);
+    const signinPassword = bcrypt.compareSync(
+      signinInfo.password,
+      userExists.password
+    );
 
-    if(!signinPassword) {
-      res.send("Login failed!");
+    if (!signinPassword) {
+      res.send("Login failed! Password is incorrect");
       return;
     }
 
@@ -49,54 +52,56 @@ router.post('/signin', async (req, res) => {
 
 // Signup page
 router.get("/signup", (req, res) => {
-    if (req.session.user) {
-      res.redirect("../../"); // Go to homepage
-    } else {
-      res.render("../auth/signup.ejs", { user: null });
-    }
+  if (req.session.user) {
+    res.redirect("/"); // Go to homepage
+  } else {
+    res.render("../auth/signup.ejs", { user: null });
+  }
 });
 
 // Create new user
-router.post("/signup", async (request, response) => {
-    try {
-      const signupInfo = req.body;
-      const userExists = await User.findOne({ email: signupInfo.email });
+router.post("/signup", async (req, res) => {
+  try {
+    console.log(req.body);
+    const signupInfo = req.body;
+    const userExists = await User.findOne({ email: signupInfo.email });
 
-        // Check if the passwords matches
-        if (signupInfo.password !== signupInfo.confirmPassword) {
-            // Alert
-            return;
-        }
-  
-        // Check if user exists
-        if (userExists) {
-            // Alert
-            return;
-        }
-  
-        // If all good, create new user
-        // Encrypt the password
-        const hashedPassword = await bcrypt.hash(signupInfo.password, 11);
-        signupInfo.password = hashedPassword;
-    
-        // Create the user
-        await User.create(signupInfo);
-    
-        // Redirect to signin page
-        response.redirect("/auth/signin");
-    } catch (error) {
-      console.log(error);
+    // Check if the passwords matches
+    if (signupInfo.password !== signupInfo.confirmPassword) {
+      // Alert
+      res.send("Passwords do not match!");
+      return;
     }
+
+    // Check if user exists
+    if (userExists) {
+      res.send("User already exists!");
+      // Alert
+      return;
+    }
+
+    // If all good, create new user
+    // Encrypt the password
+    const hashedPassword = await bcrypt.hash(signupInfo.password, 11);
+    signupInfo.password = hashedPassword;
+
+    // Create the user
+    await User.create(signupInfo);
+    // Redirect to signin page
+    res.redirect("/auth/signin");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 // Signout
-router.get("/signout", (req, response) => {
-    try {
-      req.session.destroy();
-      res.redirect("/");
-    } catch (error) {
-      console.log(error);
-    }
+router.get("/signout", (req, res) => {
+  try {
+    req.session.destroy();
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;

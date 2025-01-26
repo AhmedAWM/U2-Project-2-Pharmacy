@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<%- include('../partials/css/home.style.ejs') %>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- jQuery -->
+
+
+    <!--Font awsome kit-->
+    <script src="https://kit.fontawesome.com/f5852314e7.js" crossorigin="anonymous"></script>
+    <!--Font awsome kit-->
+    
+    </head> 
+
+    <body>
+
+        <%- include('../partials/navbar') %>
+
+
+        
+        <h1>Welcome <%= user.name %>! </h1>
+        <h2>Here are your medicines:</h2>
+
+        <ul>
+            <% medicines.forEach(medicine => { %>
+                <li>
+                    <h3>
+                        <%= medicine.medicinName %>
+                    </h3>
+                </li>
+                <% }) %>
+        </ul>
+        <a href="/medicines/new">Add New Medicine</a>
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script>
+        
+            $(document).ready(function(){
+      
+              $(window).scroll(function(){
+                
+                  var scroll = $(window).scrollTop();
+          
+                  if (scroll > 50) {
+                    $("#navbr").css({"background-color": "rgba(255, 255, 255, 0.129)", "backdrop-filter": "blur(17px)"})
+          
+                  } else {
+                        $("#navbr").css({"background-color": "transparent", "backgdrop-filter": "blur(0px)"});  	
+                    }
+              })
+          })
+    
+    
+    
+    
+    
+    
+          //DO CERTAIN FUNCTION ON A 768PX WIDTH
+    
+          // Create a media condition that targets viewports at least 768px wide
+           // const mediaQuery = window.matchMedia('(max-width: 768px)')
+    
+            // Check if the media query is true
+            //if (mediaQuery.matches) {
+              
+             //do something
+            //}
+    
+    
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    </body>
+
+</html>

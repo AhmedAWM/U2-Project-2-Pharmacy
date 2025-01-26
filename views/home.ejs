@@ -8,7 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<%- include('./partials/css/style') %>
+<%- include('./partials/css/home.style.ejs') %>
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -25,7 +25,9 @@
 
         <%- include('./partials/navbar') %>
 
-
+<% if(user) { %>
+    <%- include('./medicines/home') %>
+<% } else { %>
         <!-- Welcome -->
         <section id="welcome" class="py-5">
             <div id="welcome_cont" class="container">
@@ -146,7 +148,7 @@
         </div>
     </section>
     <!--Why PillBox™?-->
-    
+    <% } %>
     
 
         <script>
