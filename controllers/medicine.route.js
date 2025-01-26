@@ -21,7 +21,7 @@ router.get("/", async (req, res) =>
 }); 
 router.get("/new", (req, res) => 
 {
-    res.render("new.ejs");
+    res.render("medicines/new.ejs");
 
 });
 // Sharifas tring to show the details of the medicen 
