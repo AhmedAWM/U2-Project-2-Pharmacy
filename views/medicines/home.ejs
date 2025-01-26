@@ -35,6 +35,9 @@
                 <li>
                     <h3>
                         <%= medicine.medicinName %>
+                        <% if(user.isDoctor) { %>
+                            <a href="">Edit</a> <a href="">Delete</a>
+                        <% } %>
                     </h3>
                 </li>
                 <% }) %>
