@@ -9,7 +9,7 @@ router.get("/", async (req, res) =>
         const user = req.session.user;
 
         console.log(medicines);
-        res.render("medicines/home.ejs",{ medicines: medicines, user: user });
+        res.render("home.ejs",{ medicines: medicines, user: user });
     } 
     catch (error) 
     {
@@ -19,7 +19,8 @@ router.get("/", async (req, res) =>
 }); 
 router.get("/new", (req, res) => 
 {
-    res.render("medicines/new.ejs");
+    res.render("new.ejs");
+
 });
 // Sharifas tring to show the details of the medicen 
 
