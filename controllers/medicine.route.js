@@ -78,7 +78,7 @@ router.get('/:id/edit', async (req, res) => {
 });
 
 // Edit medicine
-router.put('/edit', async (req, res) => {
+router.put('/edit/:id', async (req, res) => {
     try {
        if(req.session.user) {
         const medicine = await Medicine.findById(req.params.id);
