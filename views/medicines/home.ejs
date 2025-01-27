@@ -72,7 +72,7 @@
                                     
                                     <div class="d-flex justify-content-center align-items-center">
                                         <% if(user.isDoctor) { %>
-                                        <button class="bn632-hover bn25edit">Edit</button>
+                                        <button class="bn632-hover bn25edit" onclick="window.location.href = '/medicines/<%= medicine._id %>/edit/'">Edit</button>
                                         <form action="/medicines/<%=medicine._id%>/delete?_method=DELETE" method="POST">
                                             <button class="bn632-hover bn25delete">Delete</button>
                                         </form>

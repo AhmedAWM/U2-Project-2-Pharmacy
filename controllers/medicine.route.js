@@ -68,16 +68,17 @@ router.get("/:id", async (req, res) =>
 });
 
 // Edit medicine page if user isDoctor
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', async (req, res) => {
     if(req.session.user) {
-        res.render('medicines/edit.ejs');
+        const medicine = await Medicine.findById(req.params.id);
+        res.render('medicines/edit.ejs', { medicine: medicine});
     } else {
         res.redirect('/');
     }
 });
 
 // Edit medicine
-router.put('/:id/edit', async (req, res) => {
+router.put('/edit', async (req, res) => {
     try {
        if(req.session.user) {
         const medicine = await Medicine.findById(req.params.id);
