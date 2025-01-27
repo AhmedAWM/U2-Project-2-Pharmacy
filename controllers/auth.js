@@ -1,94 +1,107 @@
-const express = require('express');
+// Imports
+const express = require("express");
+const bcrypt = require("bcrypt");
 const router = express.Router();
-const bcrypt = require('bcrypt');
 
-const Pharmacy = require('../models/pharmacy.js'); // We should cheack this Link
+// Models
+const User = require("../models/user");
 
-router.get('/sign-up', (req, res) =>
-{
-  res.render('auth/sign-up.ejs');
-});
-
-router.get('/sign-in', (req, res) =>
-{
-  res.render('auth/sign-in.ejs');
-});
-
-/* Sign out, destroying the session for pharmacy - So i will explain this in shourt this code logs the 
-pharmacy out and then takes them back to the homepage.*/
-router.get('/sign-out', (req, res) => 
-{
-  req.session.destroy();
-  res.redirect('/');
-});
-
-// Handle pharmacy sign-up
-router.post('/sign-up', async (req, res) => 
-{
-  try {
-    // Here iam tring to check if the pharmacy name or email is already taken
-    const pharmacyInDatabase = await Pharmacy.findOne({ email: req.body.email });
-    if (pharmacyInDatabase) 
-    {
-      return res.send('Email is already registered.');
-    }
-
-    // Ensure the passwords match
-    if (req.body.password !== req.body.confirmPassword) 
-    {
-      return res.send('Password and Confirm Password must match');
-    }
-
-    // Hash the password before storing it in the database for more secuir
-    const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-    req.body.password = hashedPassword;
-
-    await Pharmacy.create(req.body);
-
-    res.redirect('/auth/sign-in');
+// Routes
+// Signin page
+router.get("/signin", (req, res) => {
+  if (req.session.user) {
+    res.redirect("../../"); // Go to homepage
+  } else {
+    res.render("../auth/signin.ejs", { user: null });
   }
-   catch (error) 
-   {
-    console.log(error);
-    res.redirect('/');
-  }
-
 });
 
-router.post('/sign-in', async (req, res) => 
-{
+// Signin
+router.post("/signin", async (req, res) => {
   try {
-    const pharmacyInDatabase = await Pharmacy.findOne({ email: req.body.email });
-    if (!pharmacyInDatabase) 
-    {
-      return res.send('Login failed. Please try again.');
+    const signinInfo = req.body;
+    const userExists = await User.findOne({ email: signinInfo.email });
+
+    if (!userExists) {
+      res.send("Login failed! User does not Exists");
+      return;
     }
 
-    // Checking using bcrypt
-    const validPassword = bcrypt.compareSync
-    (
-      req.body.password,
-      pharmacyInDatabase.password
+    const signinPassword = bcrypt.compareSync(
+      signinInfo.password,
+      userExists.password
     );
-    if (!validPassword) 
-    {
-      return res.send('Login failed. Please try again.');
+
+    if (!signinPassword) {
+      res.send("Login failed! Password is incorrect");
+      return;
     }
-    /*Create a session for the logged-in pharmacy---- This code logs the pharmacy in by saving their name 
-    and ID, and then takes them to the homepage. If there's a mistake, it catches the error and sends them
-     back to the homepage.*/
-    req.session.pharmacy = 
-    {
-      pharmacyName: pharmacyInDatabase.pharmacyName,
-      _id: pharmacyInDatabase._id
+
+    // If all above is valid, create login session
+    req.session.user = {
+      name: userExists.name,
+      email: userExists.email,
+      _id: userExists._id,
+      isDoctor: userExists.isDoctor
     };
 
-    res.redirect('/');
-  }
-   catch (error) 
-  {
+    res.redirect("/");
+  } catch (error) {
     console.log(error);
-    res.redirect('/');
+  }
+});
+
+// Signup page
+router.get("/signup", (req, res) => {
+  if (req.session.user) {
+    res.redirect("/"); // Go to homepage
+  } else {
+    res.render("../auth/signup.ejs", { user: null });
+  }
+});
+
+// Create new user
+router.post("/signup", async (req, res) => {
+  try {
+    const signupInfo = req.body;
+    const userExists = await User.findOne({ email: signupInfo.email });
+
+    // Check if the passwords matches
+    if (signupInfo.password !== signupInfo.confirmPassword) {
+      // Alert
+      res.send("Passwords do not match!");
+      return;
+    }
+
+    // Check if user exists
+    if (userExists) {
+      res.send("User already exists!");
+      // Alert
+      return;
+    }
+
+    // If all good, create new user
+    // Encrypt the password
+    const hashedPassword = await bcrypt.hash(signupInfo.password, 11);
+    signupInfo.password = hashedPassword;
+    signupInfo.isDoctor = false;
+
+    // Create the user
+    await User.create(signupInfo);
+    // Redirect to signin page
+    res.redirect("/auth/signin");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Signout
+router.get("/signout", (req, res) => {
+  try {
+    req.session.destroy();
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
   }
 });
 

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const medicineSchema = new pharmasys.Schema(
+const medicineSchema = new mongoose.Schema(
 {
     medicinName:
     {
@@ -9,6 +9,10 @@ const medicineSchema = new pharmasys.Schema(
     },
     commercialName:
     {
+        type: String,
+        required: true,
+    },
+    image: {
         type: String,
         required: true,
     },
@@ -23,6 +27,7 @@ const medicineSchema = new pharmasys.Schema(
     {
       type: Date, 
     },
+    // We must add an OWNER here, in order to show medicines that belong to a specific user
 });
 
 const Medicine = mongoose.model("Medicine", medicineSchema);

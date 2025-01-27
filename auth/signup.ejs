@@ -30,16 +30,19 @@
 			</a>
 
 			<div class="LogIn__right">
-				<h2 class="LogIn__h2">Welcome Back!</h2>
+				<h2 class="LogIn__h2">Buy your needs, with ease!</h2>
 				
-				<form action="/auth/signin" method="POST">
+				<form action="/auth/signup" method="POST">
+					<input type="text" name="name" class="LogIn__field" placeholder="name" required />
+					<input type="number" name="age" class="LogIn__field" placeholder="age" required />
 					<input type="text" name="email" class="LogIn__field" placeholder="e-mail" required />
 					<input type="password" name="password" class="LogIn__field" placeholder="password" required />
-					<button class="LogIn__btn1 mt-3">Sign in</button>
+					<input type="password" name="confirmPassword" class="LogIn__field" placeholder="confirm password" required />
+					<button class="LogIn__btn1 mt-3">Sign up</button>
 					
 					<div class="LogIn__rowDiv mt-3">
-						<a class="LogIn__btn2 mt-3" href="/auth/signup">
-							<button type="button">New user? Sign up</button>
+						<a class="LogIn__btn2 mt-3" href="/auth/signin">
+							<button type="button">Sign in</button>
 						</a>
 						<a class="LogIn__btn2 mt-3" href="/">
 							<button type="button">Home</button>

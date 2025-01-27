@@ -1,14 +1,16 @@
 const router = require("express").Router();
 const Medicine = require("../models/medicine");
 
+// View all medicines
 router.get("/", async (req, res) => 
 {
     try 
     {
         const medicines = await Medicine.find();
-        
+        const user = req.session.user;
+
         console.log(medicines);
-        res.render("medicine.ejs",{ medicines: medicines });
+        res.render("home.ejs",{ medicines: medicines, user: user });
     } 
     catch (error) 
     {
@@ -16,9 +18,35 @@ router.get("/", async (req, res) =>
         res.status(500).send("Server Error");
     }
 }); 
-router.get("/new", (req, res) => 
-{
-    res.render("medicine/new.ejs");
+
+// If isDoctor, go to create new medicine page
+router.get("/new", (req, res) => {
+    user = req.session.user;
+
+    if(user) {
+        res.render("medicines/new.ejs");
+    } else {
+        res.redirect('/');
+    }
+});
+
+// Create new medicine
+router.post('/new', async (req, res) => {
+    try {
+        const user = req.session.user;
+        if(user) {
+            const newMed = req.body;
+
+            await Medicine.create(newMed);
+
+            res.redirect('/');
+        } else {
+            res.redirect('/');
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
 });
 // Sharifas tring to show the details of the medicen 
 
@@ -75,4 +103,3 @@ router.get("/:medicineId", async (req, res) =>
 // });
 
 module.exports = router;
-
