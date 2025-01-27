@@ -35,8 +35,8 @@ integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLAS
 			<div class="LogIn__right">
 				<h2 class="LogIn__h2">Edit medicine</h2>
 				
-				<form action="/medicines/new/" method="POST">
-					<input type="text" name="commercialName" class="LogIn__field" placeholder="Commercial Name" required />
+				<form action="/medicines/edit/" method="POST">
+					<input type="text" name="commercialName" class="LogIn__field" placeholder="Commercial Name" value="<%= medicine.commercialName %>" required />
 					<input type="text" name="medicinName" class="LogIn__field" placeholder="Medical Name" required />
 					<input type="number" name="price" class="LogIn__field" placeholder="price (BHD)" required />
 					<input type="text" name="image" class="LogIn__field" placeholder="Image URL" required />
