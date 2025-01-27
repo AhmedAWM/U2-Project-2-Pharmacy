@@ -25,89 +25,80 @@
 
         <%- include('../partials/navbar') %>
 
-
+        <section class="py-5 my-5 hero_medicines">
+            <div class="container h-100 d-flex flex-column justify-content-center align-items-center">                    
+                    <% if(user.isDoctor) { %>                        
+                    <h1 id="welcome_medicines_h1" class="py-3 text-center">Welcome Dr.<%= user.name %> !</h1>
+                    <h4 id="welcome_medicines_h3" class="pt-3 text">You currently have 
+                        <% if(medicines.length === 0) { %>
+                            no
+                        <% } else { %>
+                            <%= medicines.length %>
+                        <% } %>                        
+                    medicines</h4>
+                    <h4 id="welcome_medicines_h3" class="py-1 text-center">Feel free to add, edit and delete!</h4>
+                    
+                    <% } else { %>
+                    <h1 id="welcome_medicines_h1" class="py-3 text-center">Welcome <%= user.name %> !</h1>                    
+                    <h3 id="welcome_medicines_h3" class="py- text-center">Here are your medicines:</h3>   
+                    <% } %>            
+            </div>                                                 
+        </section>
         
-       
 
-        <ul>
-            <% medicines.forEach(medicine => { %>
-                <li>
-                    <h3>
-                        <%= medicine.medicinName %>
-                        <% if(user.isDoctor) { %>
-                            <a href="">Edit</a> <a href="">Delete</a>
-                        <% } %>
-                    </h3>
-                </li>
-                <% }) %>
-        </ul>
+        <section  class="py-5">
+            <div class="container">                
+                           
+                <div class="row row-whith-wide-cards d-flex justify-content-center text-center py-0 py-md-2 py-lg-2">
+                            
+                    <% medicines.forEach(medicine => { 
+                        const date = new Date(medicine.expiryDate);
+    const formattedDate = ('0' + date.getDate()).slice(-2) + '-' +
+                          ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+                          date.getFullYear(); // Formats to dd-mm-yyyy
+                    %>
+                            <div id="h10" class="hidden col col-12 col-lg-4 col-md-6 col-sm-12 py-3">
+                                <div class="card h-100 shadow" id="classic">
+                                    <img src="<%= medicine.image %>" id="classic_img" class="card-img-top">
+                                    <div class="card-body">
+                                    <h3 class="card-title py-3"><%= medicine.commercialName %></h3>
+                                    <hr id="hr_classic">
+                                    <p class="card-text pt-3 px-4 px-sm-4 px-md-4 px-lg-4">
+                                        Medical Name: <%= medicine.medicinName %>
+                                        <br>
+                                        Expiry Date: <%= formattedDate %>                                        
+                                    </p>
+                                    <button class="bn632-without-hover bn25"><%= medicine.price %> BHD</button>
+                                    
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <% if(user.isDoctor) { %>
+                                        <button class="bn632-hover bn25edit">Edit</button>
+                                        <button class="bn632-hover bn25delete">Delete</button>
+                                        <% } %>
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+                            </div> 
+                            <% }) %>
 
-        <section id="Categories" class="py-5">
-            <div class="container">    
-                <h1>Welcome <%= user.name %>! </h1>
-                <h2>Here are your medicines:</h2>                     
-                        <div class="row row-whith-wide-cards d-flex justify-content-center text-center py-0 py-md-2 py-lg-2">
-                            <div id="h10" class="hidden col col-12 col-lg-4 col-md-6 col-sm-12 py-3">
-                                <div class="card h-100 shadow" id="classic">
-                                    <img src="img/classic.jpg" id="classic_img" class="card-img-top">
-                                    <div class="card-body">
-                                    <h3 class="card-title py-3">Medicine Name</h3>
-                                    <hr id="hr_classic">
-                                    <p class="card-text pt-3 px-4 px-sm-4 px-md-4 px-lg-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <button class="bn632-hover bn25">Take me there!</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="h10" class="hidden col col-12 col-lg-4 col-md-6 col-sm-12 py-3">
-                                <div class="card h-100 shadow" id="classic">
-                                    <img src="img/classic.jpg" id="classic_img" class="card-img-top">
-                                    <div class="card-body">
-                                    <h3 class="card-title py-3">Medicine Name</h3>
-                                    <hr id="hr_classic">
-                                    <p class="card-text pt-3 px-4 px-sm-4 px-md-4 px-lg-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <button class="bn632-hover bn25">Take me there!</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="h10" class="hidden col col-12 col-lg-4 col-md-6 col-sm-12 py-3">
-                                <div class="card h-100 shadow" id="classic">
-                                    <img src="img/classic.jpg" id="classic_img" class="card-img-top">
-                                    <div class="card-body">
-                                    <h3 class="card-title py-3">Medicine Name</h3>
-                                    <hr id="hr_classic">
-                                    <p class="card-text pt-3 px-4 px-sm-4 px-md-4 px-lg-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <button class="bn632-hover bn25">Take me there!</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="h10" class="hidden col col-12 col-lg-4 col-md-6 col-sm-12 py-3">
-                                <div class="card h-100 shadow" id="classic">
-                                    <img src="img/classic.jpg" id="classic_img" class="card-img-top">
-                                    <div class="card-body">
-                                    <h3 class="card-title py-3">Medicine Name</h3>
-                                    <hr id="hr_classic">
-                                    <p class="card-text pt-3 px-4 px-sm-4 px-md-4 px-lg-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <button class="bn632-hover bn25">Take me there!</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="h10" class="hidden col col-12 col-lg-4 col-md-6 col-sm-12 py-3">
-                                <div class="card h-100 shadow" id="classic">
-                                    <img src="img/classic.jpg" id="classic_img" class="card-img-top">
-                                    <div class="card-body">
-                                    <h3 class="card-title py-3">Medicine Name</h3>
-                                    <hr id="hr_classic">
-                                    <p class="card-text pt-3 px-4 px-sm-4 px-md-4 px-lg-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <button class="bn632-hover bn25">Take me there!</button>
-                                    </div>
-                                </div>
-                            </div>
+                
                         </div>
-                        
-                </div>
-                </section>
+            </div>
+        </section>
+            
 
-        <% if(user.isDoctor) { %><a href="/medicines/new">Add New Medicine</a><% } %>
+        <% if(user.isDoctor) { %>                
+                <button class="add_new_medicince" onclick="linkToNew()"><i class="fa-solid fa-plus"></i></button>                            
+        <% } %>
+
+
+        <!-- I added this to prevent the <a> tag from applying unwanted styles -->
+        <script>
+            function linkToNew() {
+                window.location.href = "/medicines/new";
+            }
+        </script>
 
        
 
