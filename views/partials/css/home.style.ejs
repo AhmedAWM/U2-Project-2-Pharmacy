@@ -108,7 +108,6 @@
     @media (max-width: 768px) {
 
         body {
-            background: url("/assets/img/bg100.svg") no-repeat center center fixed;
             background-size: cover;
 
         }
@@ -140,6 +139,19 @@
     #welcome_h3 {
         font-family: 'Poppins', sans-serif;
         font-weight: 500;
+    }
+
+    #welcome_medicines_h1 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 45px;
+        color: white;
+    }
+
+    #welcome_medicines_h3 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        color: white;
     }
 
 
@@ -274,12 +286,17 @@
     -moz-text-fill-color: transparent;
 }
 
-
+@media (max-width: 576px) {
+    body{
+                background: url('../../../assets/img/bg_mobile.svg') no-repeat center center fixed; 
+                background-size: cover;
+            }
+}
 
  
 @media (max-width: 768px) {
             body{
-                background: url('../../../assets/img/bg100.svg') no-repeat center center fixed; 
+                background: url('../../../assets/img/bg_tablet.svg') no-repeat center center fixed; 
                 background-size: cover;
             }
         }
@@ -424,4 +441,115 @@
     #classic{
     border-radius: 20px;
 }
+
+
+.bn632-without-hover.bn25 {
+    background-color: transparent;  
+    backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+.bn632-hover.bn25edit {
+  background-image: linear-gradient(
+    to right,
+    #215ab5,
+    #5e97cf,
+    #333d47,
+    #2f65bb
+  );
+}
+.bn632-hover.bn25delete {
+  background-image: linear-gradient(
+    to right,
+    #bb2f2f,
+    #b6462d,
+    #983a25,
+    #bb2f2f
+  );
+}
+
+.bn632-hover {
+  width: 160px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align:center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.bn632-without-hover {
+  width: 100%;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 55px;
+  text-align:center;
+  border: none;
+  border-radius: 10px;
+  background-size: 300% 100%;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.bn632-without-hover:hover {
+    cursor: default;
+}
+
+.bn632-without-hover:focus {
+  outline: none;
+}
+
+.bn632-hover:hover {
+  background-position: 100% 0;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.bn632-hover:focus {
+  outline: none;
+}
+
+.hero_medicines {
+    height: 60vh;
+}
+
+
+.add_new_medicince {
+    backdrop-filter: blur(17px);
+    -webkit-backdrop-filter: blur(17px);
+    border: 3px solid #312954;
+    border-radius: 15px;
+    background-color: transparent;
+    color: #fff;    
+    box-shadow: 5px 5px #312954, 10px 10px #d53a55, 15px 15px #f7770f;
+    font-size: 1.5rem;
+    outline: none;
+    padding: .5rem;
+    position: fixed;
+    right: 55px;
+    bottom: 45px;
+    text-align: center;
+    transform: scale(1.12);
+    z-index: 1000;
+  }
+  
+
+  .fa-plus {
+    padding: 5px;
+  }
+ 
+
 </style>
