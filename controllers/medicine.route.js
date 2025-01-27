@@ -9,7 +9,6 @@ router.get("/", async (req, res) =>
         const medicines = await Medicine.find();
         const user = req.session.user;
 
-        console.log(medicines);
         res.render("home.ejs",{ medicines: medicines, user: user });
     } 
     catch (error) 
@@ -50,11 +49,11 @@ router.post('/new', async (req, res) => {
 });
 // Sharifas tring to show the details of the medicen 
 
-router.get("/:medicineId", async (req, res) => 
+router.get("/:id", async (req, res) => 
 {
     try {
         //  sharifa tring to Find the medicine by its ID and populate owner information
-        const foundMedicine = await Medicine.findById(req.params.medicineId);
+        const foundMedicine = await Medicine.findById(req.params.id);
         // i will put extra metode which shows if the pationt have some favorit medicine
     //  const userHasFavorited = foundMedicine.favoritedByUser.some(user => user.equals(req.session.user._id));
 
@@ -65,6 +64,43 @@ router.get("/:medicineId", async (req, res) =>
     {
         console.log(error);
         res.status(500).send("Error fetching medicine details");
+    }
+});
+
+// Edit medicine page if user isDoctor
+router.get('/:id/edit', async (req, res) => {
+    if(req.session.user) {
+        const medicine = await Medicine.findById(req.params.id);
+        res.render('medicines/edit.ejs', { medicine: medicine});
+    } else {
+        res.redirect('/');
+    }
+});
+
+// Edit medicine
+router.put('/edit/:id', async (req, res) => {
+    try {
+       if(req.session.user) {
+        const medicine = await Medicine.findById(req.params.id);
+        const editedMedicine = req.body;
+
+        await Medicine.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect('/');
+       } else {
+        res.redirect('/');
+       }
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+// Delete medicine if user isDoctor
+router.delete('/:id/delete', async (req, res) => {
+    try {
+        await Medicine.findByIdAndDelete(req.params.id);
+        res.redirect('/');
+    } catch (e) {
+        console.log(e);
     }
 });
 

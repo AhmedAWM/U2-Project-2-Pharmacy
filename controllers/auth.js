@@ -17,28 +17,33 @@ router.get("/signin", (req, res) => {
 });
 
 // Signin
-router.post("/signin", async (req, res) => {
+router.post("/signin", async (req, res) => 
+{
   try {
     const signinInfo = req.body;
     const userExists = await User.findOne({ email: signinInfo.email });
 
-    if (!userExists) {
+    if (!userExists) 
+    {
       res.send("Login failed! User does not Exists");
       return;
     }
 
-    const signinPassword = bcrypt.compareSync(
+    const signinPassword = bcrypt.compareSync
+    (
       signinInfo.password,
       userExists.password
     );
 
-    if (!signinPassword) {
+    if (!signinPassword) 
+    {
       res.send("Login failed! Password is incorrect");
       return;
     }
 
     // If all above is valid, create login session
-    req.session.user = {
+    req.session.user = 
+    {
       name: userExists.name,
       email: userExists.email,
       _id: userExists._id,
@@ -52,29 +57,36 @@ router.post("/signin", async (req, res) => {
 });
 
 // Signup page
-router.get("/signup", (req, res) => {
-  if (req.session.user) {
+router.get("/signup", (req, res) => 
+{
+  if (req.session.user)
+  {
     res.redirect("/"); // Go to homepage
-  } else {
+  } else
+  {
     res.render("../auth/signup.ejs", { user: null });
   }
 });
 
 // Create new user
-router.post("/signup", async (req, res) => {
-  try {
+router.post("/signup", async (req, res) => 
+{
+  try 
+  {
     const signupInfo = req.body;
     const userExists = await User.findOne({ email: signupInfo.email });
 
     // Check if the passwords matches
-    if (signupInfo.password !== signupInfo.confirmPassword) {
+    if (signupInfo.password !== signupInfo.confirmPassword) 
+    {
       // Alert
       res.send("Passwords do not match!");
       return;
     }
 
     // Check if user exists
-    if (userExists) {
+    if (userExists) 
+    {
       res.send("User already exists!");
       // Alert
       return;
@@ -96,11 +108,14 @@ router.post("/signup", async (req, res) => {
 });
 
 // Signout
-router.get("/signout", (req, res) => {
-  try {
+router.get("/signout", (req, res) => 
+{
+  try 
+  {
     req.session.destroy();
     res.redirect("/");
-  } catch (error) {
+  } catch (error) 
+  {
     console.log(error);
   }
 });

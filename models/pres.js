@@ -14,11 +14,6 @@ const prescriptionSchema = new mongoose.Schema
     type: String, 
     required: true,
   },
-  dosage: 
-  {
-    type: String,
-    required: true,
-  },
   doctor: 
   {
     type: mongoose.Schema.Types.ObjectId,
