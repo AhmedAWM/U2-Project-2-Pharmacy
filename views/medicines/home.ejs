@@ -72,7 +72,7 @@
                                     
                                     <div class="d-flex justify-content-center align-items-center">
                                         <% if(user.isDoctor) { %>
-                                        <button class="bn632-hover bn25edit">Edit</button>
+                                        <button class="bn632-hover bn25edit" onclick="linkToEdit()">Edit</button>
                                         <button class="bn632-hover bn25delete">Delete</button>
                                         <% } %>
                                     </div>
@@ -97,6 +97,10 @@
         <script>
             function linkToNew() {
                 window.location.href = "/medicines/new";
+            }
+
+            function linkToEdit() {
+                window.location.href = "/medicines/edit";
             }
         </script>
 
