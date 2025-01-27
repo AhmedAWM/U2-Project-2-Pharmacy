@@ -1,0 +1,555 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+    body{
+   background: url(/assets/img/bg.svg) no-repeat center center fixed; 
+   background-size: cover;
+   background-color: #001220;
+}
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+/*navbar hamburger icon*/
+.ham {
+   cursor: pointer;
+   -webkit-tap-highlight-color: transparent;
+   transition: transform 400ms;
+   -moz-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+ }
+ .hamRotate.active {
+   transform: rotate(45deg);
+ }
+ .hamRotate180.active {
+   transform: rotate(180deg);
+ }
+ .line {
+   fill:none;
+   transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+   stroke:white;
+   stroke-width:5.5;
+   stroke-linecap:round;
+ }
+
+
+ .ham3 .top {
+   stroke-dasharray: 40 130;
+ }
+ .ham3 .middle {
+   stroke-dasharray: 40 140;
+ }
+ .ham3 .bottom {
+   stroke-dasharray: 40 205;
+ }
+ .ham3.active .top {
+   stroke-dasharray: 75 130;
+   stroke-dashoffset: -63px;
+ }
+ .ham3.active .middle {
+   stroke-dashoffset: -102px;
+ }
+ .ham3.active .bottom {
+   stroke-dasharray: 110 205;
+   stroke-dashoffset: -86px;
+ }
+
+
+
+
+ 
+
+    #cont1 {
+        /*background-color: rgba(255, 255, 255, 0.168);  
+          backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);*/
+        border-radius: 20px;
+    }
+
+    #cont1 a {
+        color: white;
+    }
+
+
+
+    #brand {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 26px;
+    }
+
+    #uli {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        font-size: 15.5px;
+        background-color: rgba(255, 255, 255, 0.168);
+        backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+    }
+
+    @media (max-width: 576px) {
+
+        #uli {
+            font-size: 15px;
+        }
+
+        #welcome_img {
+            display: none;
+        }
+
+    }
+
+
+    @media (max-width: 768px) {
+
+        body {
+            background-size: cover;
+
+        }
+
+    }
+
+
+    #navbr {
+        transition: 0.3s;
+        background-color: transparent;
+    }
+
+
+    /*WELCOME STYLES*/
+    #welcome {
+        height: 100vh;
+    }
+
+    #welcome_cont {
+        height: 100%;
+    }
+
+    #welcome_h1 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 45px;
+    }
+
+    #welcome_h3 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+    }
+
+    #welcome_medicines_h1 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 45px;
+        color: white;
+    }
+
+    #welcome_medicines_h3 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        color: white;
+    }
+
+
+
+
+    /*Our services styles*/
+
+
+
+
+    #services_container {
+        height: 100%;
+    }
+
+    #services_h1 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 45px;
+    }
+
+    #services_content {
+        height: 100%;
+    }
+
+    #card-bnk {
+        height: 180px;
+        width: 300px;
+        border-radius: 12px;
+        background: url(assets/img/bnkbg.webp) no-repeat center center;
+        background-size: cover;
+    }
+
+    .fa-cc-visa {
+        font-size: 2.2rem;
+    }
+
+    #card-bnk {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .br_17 {
+        border-radius: 24px;
+        background-color: rgba(255, 255, 255, 0.080);
+        backdrop-filter: blur(20px);
+
+        font-family: 'Poppins', sans-serif;
+    }
+
+    #eng {
+        transition: 0.3s ease;
+    }
+
+    #eng:hover {
+        background-color: rgba(255, 255, 255, 0.082);
+        border-radius: 15px;
+    }
+
+
+    #fra {
+        transition: 0.3s;
+    }
+
+
+    #fra:hover {
+        background-color: rgba(255, 255, 255, 0.082);
+        border-radius: 15px;
+    }
+
+    #langs_ul:hover {
+        cursor: pointer;
+    }
+
+
+    #be_prepared {
+        color: white;
+        background-color: rgba(255, 255, 255, 0.082);
+        backdrop-filter: blur(17px);
+        -webkit-backdrop-filter: blur(17px);
+        font-family: 'Poppins', sans-serif;
+        border-radius: 15px;
+    }
+
+
+    @media (max-width: 576px) {
+
+        #be_prepared_h2,
+        #be_prepared_txt {
+            padding-right: 0px;
+        }
+    }
+
+
+    #vid {
+        width: 100% !important;
+        border-radius: 30px;
+        height: auto !important;
+
+    }
+
+    #services {
+        background: none;
+    }
+
+    #vid_sec {
+        background: url(assets/img/wave.svg), url(assets/img/wave_upside_down.svg) no-repeat;
+        background-size: cover;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        #vid {
+            transform: scale(0.7);
+        }
+
+        #vid_sec {
+            background: none;
+        }
+
+
+    }
+
+    #title_span{
+    background-color: #f3ec78;
+    background: linear-gradient(
+        60deg,
+       
+        #008aff, #86d472
+      );
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+}
+
+@media (max-width: 576px) {
+    body{
+                background: url('../../../assets/img/bg_mobile.svg') no-repeat center center fixed; 
+                background-size: cover;
+            }
+}
+
+ 
+@media (max-width: 768px) {
+            body{
+                background: url('../../../assets/img/bg_tablet.svg') no-repeat center center fixed; 
+                background-size: cover;
+            }
+        }
+
+
+        @font-face {
+            font-family: tajawalBold;
+            src: url('../../fonts/Tajawal-Bold.ttf');
+        }
+
+
+
+        @font-face {
+            font-family: poppins;
+            src: url('../../fonts/Poppins-Regular.ttf');
+        }
+
+
+
+        @media (max-width: 991px) {
+            #crd2{
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+
+            #crd3{
+                border-top-right-radius: 0px;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                border-top: 0px;
+            }
+        }
+    
+
+        @media (max-width: 768px) {
+            #crd1{
+                border-top-right-radius: 20px;
+                border-bottom-left-radius: 0px;  
+                border-bottom: none;              
+            }
+
+            #crd2{
+                border-radius: 0px;
+                border: none;
+            }
+            
+        }
+
+
+        .bn39 {
+  background-image: linear-gradient(135deg, #008aff, #86d472);
+  border-radius: 6px;
+  font-family: 'poppins', sans-serif;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: block;
+  height: 50px;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 4px;
+  position: relative;
+  text-decoration: none;
+  width: 8em;
+  z-index: 2;;
+}
+
+.bn39:hover {
+  color: #fff;
+}
+
+.bn39 .bn39span {
+  align-items: center;
+  background: #001220;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  transition: background 0.5s ease;
+  width: 100%;
+}
+
+.bn39:hover .bn39span {
+  background: transparent;
+}
+
+#classic{
+          color:rgb(231, 230, 230);
+            background-color: rgba(255, 255, 255, 0.05);  
+            backdrop-filter: blur(17px);
+            -webkit-backdrop-filter: blur(17px);
+            background-size: cover; /* or contain depending on what you want */
+            background-position: center center;
+            font-family: 'TajawalReg', sans-serif;            
+  
+         }
+
+
+          #classic_img {
+    height: 15rem;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+#classic{
+    border-radius: 20px;
+  }
+
+
+  .bn632-hover.bn25w {
+    background-image: linear-gradient(
+      to right,
+      #289c34,
+      rgb(160, 189, 73),
+      rgb(160, 189, 73),
+      #289c34
+    );
+    
+    font-family: 'TajawalReg', sans-serif;
+    }
+
+
+    #classic{
+          color:rgb(231, 230, 230);
+            background-color: rgba(255, 255, 255, 0.05);  
+            backdrop-filter: blur(17px);
+            -webkit-backdrop-filter: blur(17px);
+            background-size: cover; /* or contain depending on what you want */
+            background-position: center center;
+            font-family: 'Poppins', sans-serif;
+
+         }
+
+         #classic_img {
+    height: 15rem;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+    #classic{
+    border-radius: 20px;
+}
+
+
+.bn632-without-hover.bn25 {
+    background-color: transparent;  
+    backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+.bn632-hover.bn25edit {
+  background-image: linear-gradient(
+    to right,
+    #215ab5,
+    #5e97cf,
+    #333d47,
+    #2f65bb
+  );
+}
+.bn632-hover.bn25delete {
+  background-image: linear-gradient(
+    to right,
+    #bb2f2f,
+    #b6462d,
+    #983a25,
+    #bb2f2f
+  );
+}
+
+.bn632-hover {
+  width: 160px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align:center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.bn632-without-hover {
+  width: 100%;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 55px;
+  text-align:center;
+  border: none;
+  border-radius: 10px;
+  background-size: 300% 100%;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.bn632-without-hover:hover {
+    cursor: default;
+}
+
+.bn632-without-hover:focus {
+  outline: none;
+}
+
+.bn632-hover:hover {
+  background-position: 100% 0;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.bn632-hover:focus {
+  outline: none;
+}
+
+.hero_medicines {
+    height: 60vh;
+}
+
+
+.add_new_medicince {
+    backdrop-filter: blur(17px);
+    -webkit-backdrop-filter: blur(17px);
+    border: 3px solid #312954;
+    border-radius: 15px;
+    background-color: transparent;
+    color: #fff;    
+    box-shadow: 5px 5px #312954, 10px 10px #d53a55, 15px 15px #f7770f;
+    font-size: 1.5rem;
+    outline: none;
+    padding: .5rem;
+    position: fixed;
+    right: 55px;
+    bottom: 45px;
+    text-align: center;
+    transform: scale(1.12);
+    z-index: 1000;
+  }
+  
+
+  .fa-plus {
+    padding: 5px;
+  }
+ 
+
+</style>
