@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Medicines</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<%- include('../partials/css/home.style.ejs') %>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- jQuery -->
+
+
+    <!--Font awsome kit-->
+    <script src="https://kit.fontawesome.com/f5852314e7.js" crossorigin="anonymous"></script>
+    <!--Font awsome kit-->
+    
+    </head> 
+
+    <body>
+
+        <%- include('../partials/navbar') %>
+
+        <section class="py-5 my-5 hero_medicines">
+            <div class="container h-100 d-flex flex-column justify-content-center align-items-center">                    
+                    <% if(user.isDoctor) { %>                        
+                    <h1 id="welcome_medicines_h1" class="py-3 text-center">Welcome Dr.<%= user.name %> !</h1>
+                    <h4 id="welcome_medicines_h3" class="pt-3 text">You currently have 
+                        <% if(medicines.length === 0) { %>
+                            no
+                        <% } else { %>
+                            <%= medicines.length %>
+                        <% } %>                        
+                    medicines</h4>
+                    <h4 id="welcome_medicines_h3" class="py-1 text-center">Feel free to add, edit and delete!</h4>
+                    
+                    <% } else { %>
+                    <h1 id="welcome_medicines_h1" class="py-3 text-center">Welcome <%= user.name %> !</h1>                    
+                    <h3 id="welcome_medicines_h3" class="py- text-center">Here are your medicines:</h3>   
+                    <% } %>            
+            </div>                                                 
+        </section>
+        
+
+        <section  class="py-5">
+            <div class="container">                
+                           
+                <div class="row row-whith-wide-cards d-flex justify-content-center text-center py-0 py-md-2 py-lg-2">
+                            
+                    <% medicines.forEach(medicine => { 
+                        const date = new Date(medicine.expiryDate);
+    const formattedDate = ('0' + date.getDate()).slice(-2) + '-' +
+                          ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+                          date.getFullYear(); // Formats to dd-mm-yyyy
+                    %>
+                            <div id="h10" class="hidden col col-12 col-lg-4 col-md-6 col-sm-12 py-3">
+                                <div class="card h-100 shadow" id="classic">
+                                    <img src="<%= medicine.image %>" id="classic_img" class="card-img-top">
+                                    <div class="card-body">
+                                    <h3 class="card-title py-3"><%= medicine.commercialName %></h3>
+                                    <hr id="hr_classic">
+                                    <p class="card-text pt-3 px-4 px-sm-4 px-md-4 px-lg-4">
+                                        Medical Name: <%= medicine.medicinName %>
+                                        <br>
+                                        Expiry Date: <%= formattedDate %>                                        
+                                    </p>
+                                    <button class="bn632-without-hover bn25"><%= medicine.price %> BHD</button>
+                                    
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <% if(user.isDoctor) { %>
+                                        <button class="bn632-hover bn25edit" onclick="window.location.href = '/medicines/<%= medicine._id %>/edit/'">Edit</button>
+                                        <form action="/medicines/<%=medicine._id%>/delete?_method=DELETE" method="POST">
+                                            <button class="bn632-hover bn25delete">Delete</button>
+                                        </form>
+                                        <% } %>
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+                            </div> 
+                            <% }) %>
+                        </div>
+            </div>
+        </section>
+            
+
+        <% if(user.isDoctor) { %>                
+                <button class="add_new_medicince" onclick="linkToNew()"><i class="fa-solid fa-plus"></i></button>                            
+        <% } %>
+
+
+        <!-- I added this to prevent the <a> tag from applying unwanted styles -->
+        <script>
+            function linkToNew() {
+                window.location.href = "/medicines/new";
+            }
+        </script>
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script>
+        
+            $(document).ready(function(){
+      
+              $(window).scroll(function(){
+                
+                  var scroll = $(window).scrollTop();
+          
+                  if (scroll > 50) {
+                    $("#navbr").css({"background-color": "rgba(255, 255, 255, 0.129)", "backdrop-filter": "blur(17px)"})
+          
+                  } else {
+                        $("#navbr").css({"background-color": "transparent", "backgdrop-filter": "blur(0px)"});  	
+                    }
+              })
+          })
+    
+    
+    
+    
+    
+    
+          //DO CERTAIN FUNCTION ON A 768PX WIDTH
+    
+          // Create a media condition that targets viewports at least 768px wide
+           // const mediaQuery = window.matchMedia('(max-width: 768px)')
+    
+            // Check if the media query is true
+            //if (mediaQuery.matches) {
+              
+             //do something
+            //}
+    
+    
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    </body>
+
+</html>
