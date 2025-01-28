@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const Doctor = require("../models/user");
+const Pres = require('../models/pres');
 
 // View all doctors for all users
 router.get("/", async (req, res) => {
@@ -27,6 +28,10 @@ router.post("/new", async (req, res) => {
         if(req.session.user && req.session.user.isDoctor) {
             const newDoctor = req.body;
             newDoctor.isDoctor = true;
+
+            const hashedPassword = await bcrypt.hash(newDoctor.password, 11);
+            newDoctor.password = hashedPassword;;
+
             await Doctor.create(newDoctor);
 
             res.redirect('/doctors');
@@ -45,7 +50,7 @@ router.get('/:id/edit', async (req, res) => {
         const doctor = await Doctor.findById(req.params.id);
         res.render('doctors/edit.ejs', { doctor: doctor});
     } else {
-        res.redirect('/doctors');
+        res.redirect('/');
     }
 });
 
@@ -75,6 +80,7 @@ router.delete('/:id/delete', async (req, res) => {
     try {
         if(req.session.user && req.session.user.isDoctor) {
             await Doctor.findByIdAndDelete(req.params.id);
+            await Pres.deleteMany({ doctor: req.params.id })
             res.redirect('/doctors');
         } else {
             res.redirect('/');
