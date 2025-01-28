@@ -63,7 +63,7 @@ router.get("/:id", async (req, res) => {
 
 // Edit medicine page if user isDoctor
 router.get('/:id/edit', async (req, res) => {
-    if(req.session.user) {
+    if(req.session.user && req.session.user.isDoctor) {
         const medicine = await Medicine.findById(req.params.id);
         res.render('medicines/edit.ejs', { medicine: medicine});
     } else {
@@ -74,7 +74,7 @@ router.get('/:id/edit', async (req, res) => {
 // Edit medicine
 router.put('/edit/:id', async (req, res) => {
     try {
-       if(req.session.user) {
+       if(req.session.user && req.session.user.isDoctor) {
         const medicine = await Medicine.findById(req.params.id);
         const editedMedicine = req.body;
 
@@ -91,8 +91,12 @@ router.put('/edit/:id', async (req, res) => {
 // Delete medicine if user isDoctor
 router.delete('/:id/delete', async (req, res) => {
     try {
-        await Medicine.findByIdAndDelete(req.params.id);
-        res.redirect('/medicines');
+        if(req.session.user && req.session.user.isDoctor) {
+            await Medicine.findByIdAndDelete(req.params.id);
+            res.redirect('/medicines');
+        } else {
+            res.redirect('/');
+        }
     } catch (e) {
         console.log(e);
     }
