@@ -85,6 +85,8 @@ router.post("/signup", async (req, res) => {
     const hashedPassword = await bcrypt.hash(signupInfo.password, 11);
     signupInfo.password = hashedPassword;
     signupInfo.isDoctor = false;
+    signupInfo.specialty = '';
+    signupInfo.photo = '';
 
     // Create the user
     await User.create(signupInfo);

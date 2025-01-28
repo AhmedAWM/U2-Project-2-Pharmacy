@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add new doctor - Pill Box</title>
+
+    <!-- Adding style to the page -->
+    <%- include('../../views/partials/head') %>
+  </head>
+  <body>
+    <!-- Adding header to the page -->
+    <%- include('../../views/partials/header') %>
+    <main>
+      <section class="main-section">
+        <section class="general-input-container">
+          <form action="/doctors/new" method="POST" class="general-input-form">
+            <h1 class="title">Add new doctor</h1>
+            <h2 class="subtitle">Please fill in information</h2>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" class="input-field" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="input-field" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" class="input-field" required>
+
+            <label for="specialty">Specialty</label>
+            <input type="text" id="specialty" name="specialty" class="input-field" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="input-field" required>
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" class="input-field" required>
+
+            <label for="photo">Photo</label>
+            <input type="text" id="photo" name="photo" class="input-field" required>
+            <div>
+
+                <button class="signin-signup-button">Create a doctor account</button>
+            </div>
+          </form>
+      </section>
+      </section>
+      
+    </main>
+  </body>
+</html>

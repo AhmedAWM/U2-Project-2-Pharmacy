@@ -1,60 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookbook - Signin</title>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+    <!-- Adding style to the page -->
+    <%- include('../views/partials/head') %>
+  </head>
+  <body>
+    <!-- Adding header to the page -->
+    <%- include('../views/partials/header') %>
+    <main>
+      <section class="section-hero grid--c-1-1">
+        <div class="hero signin-container">
+          <form action="/auth/signin" method="POST" class="signin-form">
+            <h1 class="title">Welcome to Pill Box!</h1>
+            <h2 class="subtitle">Please fill in sign in information</h2>
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="input-field"
+              required
+            />
 
-	<!-- fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-	<!-- fonts -->
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="input-field"
+              required
+            />
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+            <div>
+              <button class="signin-signup-button">Sign In</button>
+            </div>
 
-	<%- include('../views/partials/css/auth.style.ejs') %>
-
-</head>
-
-<body>
-	<section class="py-5 d-flex align-items-center LogIn__container">
-		<div class="LogIn__contact_box">
-
-			<a class="homeLink" href="/">
-				<div class="LogIn__left">
-					<h3 class="LogIn__lefth3">Pill Box™</h3>
-				</div>
-			</a>
-
-			<div class="LogIn__right">
-				<h2 class="LogIn__h2">Welcome Back!</h2>
-				
-				<form action="/auth/signin" method="POST">
-					<input type="text" name="email" class="LogIn__field" placeholder="e-mail" required />
-					<input type="password" name="password" class="LogIn__field" placeholder="password" required />
-					<button class="LogIn__btn1 mt-3">Sign in</button>
-					
-					<div class="LogIn__rowDiv mt-3">
-						<a class="LogIn__btn2 mt-3" href="/auth/signup">
-							<button type="button">New user? Sign up</button>
-						</a>
-						<a class="LogIn__btn2 mt-3" href="/">
-							<button type="button">Home</button>
-						</a>
-					</div>
-				</form>
-
-			</div>
-
-
-
-
-		</div>
-	</section>
-
-</body>
-
+            <div class="signin-or-signup">
+              <p>Not a member? <a href="/auth/signup">Create an account</a></p>
+            </div>
+          </form>
+        </div>
+        <div class="hero hero-image-container">
+          <img src="/img/signin-image.svg" alt="" class="hero-image" />
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

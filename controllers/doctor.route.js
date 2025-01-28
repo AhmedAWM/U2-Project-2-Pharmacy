@@ -1,36 +1,41 @@
 const router = require("express").Router();
-const Medicine = require("../models/medicine");
+const Doctor = require("../models/user");
 
-router.get("/", async (req, res) => 
-{
-    try 
-    {
-        const medicines = await Medicine.find();
-        res.render("doctors/home.ejs", { medicines });
+// View all doctors
+router.get("/", async (req, res) => {
+    try {
+        const doctors = await Doctor.find({ isDoctor: true });
+        res.render("doctors/home.ejs", { doctors });
     } 
-    catch (error) 
-    {
+    catch (error) {
         console.error(error);
-        res.status(500).send("Server Error");
     }
 });
 
-router.get("/new", (req, res) => 
-{
-    res.render("medicine/new.ejs");
+// Add new doctor page
+router.get("/new", (req, res) => {
+    if(req.session.user && req.session.user.isDoctor) {
+        res.render("doctors/new.ejs");
+    } else {
+        res.redirect("/");
+    }
 });
 
-router.get("/:medicineId", async (req, res) => 
-{
-    try 
-    {
-        const foundMedicine = await Medicine.findById(req.params.medicineId);
-        res.render("medicine/show.ejs", { medicine: foundMedicine });
-    } 
-    catch (error) 
-    {
-        console.error(error);
-        res.status(500).send("Error fetching medicine details");
+// Add new doctor
+router.post("/new", async (req, res) => {
+    try {
+        if(req.session.user && req.session.user.isDoctor) {
+            const newDoctor = req.body;
+            newDoctor.isDoctor = true;
+            await Doctor.create(newDoctor);
+
+            res.redirect('/doctors');
+        } else {
+            res.redirect('/');
+        }
+
+    } catch (error) {
+        console.log(error);
     }
 });
 

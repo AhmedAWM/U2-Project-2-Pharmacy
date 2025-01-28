@@ -24,9 +24,11 @@ const userSchema = new mongoose.Schema(
   },
   age:
   {
-    type:Number,
+    type: Number,
     required: true,
   },
+  specialty: String,
+  photo: String
 });
 
 const User = mongoose.model('User', userSchema);
