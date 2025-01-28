@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add new prescription - Pill Box</title>
+
+    <!-- Adding style to the page -->
+    <%- include('../../views/partials/head') %>
+  </head>
+  <body>
+    <!-- Adding header to the page -->
+    <%- include('../../views/partials/header') %>
+    <main>
+      <section class="main-section">
+        <section class="general-input-container">
+          <form action="/pres/new" method="POST" class="general-input-form">
+              <h1 class="title">Add new prescription</h1>
+              <h2 class="subtitle">Please fill in information</h2>
+              <label for="patient">Patient Name</label>
+              <select name="patient" id="patient" class="input-field">
+                <% patients.forEach((patient) => { %>
+                    <option value="<%= patient._id %>"><%= patient.name %></option>
+                <% }); %>
+              </select>
+
+              <label for="medications">Medicine</label>
+              <select name="medications" id="patient" class="input-field">
+                <% medicines.forEach((medicine) => { %>
+                    <option value="<%= medicine._id %>"><%= medicine.commercialName %></option>
+                <% }); %>
+              </select>
+
+              <label for="instructions">Instructions</label>
+              <textarea id="instructions" name="instructions" class="input-field text-box" required></textarea>
+              <div>
+                <button class="signin-signup-button">Submit</button>
+                <button type="reset" class="signin-signup-button">Clear</button>
+              </div>
+          </form>
+      </section>
+      </section>
+      
+    </main>
+  </body>
+</html>

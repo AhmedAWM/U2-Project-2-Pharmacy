@@ -9,7 +9,7 @@ const session = require("express-session");
 const authController = require("./controllers/auth");
 const medicineController = require("./controllers/medicine.route");
 const doctorController = require("./controllers/doctor.route")
-//const presController = require('./controllers/pres');
+const presController = require('./controllers/pres.route');
 
 // Inizializations
 const app = express();
@@ -18,6 +18,7 @@ dotenv.config();
 // Models
 const User = require("./models/user");
 const Medicine = require("./models/medicine");
+
 // Middlewares
 app.use(express.static("public")); // Load images and static files in pages with "public" directory
 app.use(express.urlencoded({ extended: false })); // Allow to transfer the objects to another route through request.body
@@ -44,6 +45,9 @@ mongoose
 // Routes and files
 app.use(passUserToView)
 app.use("/auth", authController);
+app.use("/medicines", medicineController);
+app.use("/doctors", doctorController);
+app.use('/pres', presController);
 
 // Home page
 app.get("/", async(req, res) => {
@@ -65,10 +69,6 @@ app.get("/", async(req, res) => {
       console.log(error);
   }
 });
-
-app.use("/medicines", medicineController);
-
-app.use("/doctors", doctorController);
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);

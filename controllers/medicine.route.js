@@ -3,19 +3,16 @@ const Medicine = require("../models/medicine");
 
 // View all medicines
 router.get("/", async (req, res) => {
-    try 
-    {
+    try {
         if(req.session.user) {
             const medicines = await Medicine.find();
             const user = req.session.user;
 
-            res.render("medicines/home.ejs",{ medicines: medicines, user: user });
+            res.render("medicines/home.ejs", { medicines: medicines, user: user });
         } else {
             res.redirect("/");
         }
-    } 
-    catch (error) 
-    {
+    } catch (error) {
         console.log(error);
         res.status(500).send("Server Error");
     }
@@ -48,24 +45,11 @@ router.post('/new', async (req, res) => {
     }
 });
 
-// Sharifas tring to show the details of the medicen 
-router.get("/:id", async (req, res) => {
-    try {
-        //  sharifa tring to Find the medicine by its ID and populate owner information
-        const foundMedicine = await Medicine.findById(req.params.id);
-    } 
-    catch (error) 
-    {
-        console.log(error);
-        res.status(500).send("Error fetching medicine details");
-    }
-});
-
 // Edit medicine page if user isDoctor
 router.get('/:id/edit', async (req, res) => {
     if(req.session.user && req.session.user.isDoctor) {
         const medicine = await Medicine.findById(req.params.id);
-        res.render('medicines/edit.ejs', { medicine: medicine});
+        res.render('medicines/edit.ejs', { medicine: medicine });
     } else {
         res.redirect('/medicines');
     }
@@ -79,6 +63,7 @@ router.put('/edit/:id', async (req, res) => {
         const editedMedicine = req.body;
 
         await Medicine.findByIdAndUpdate(req.params.id, req.body);
+        
         res.redirect('/medicines');
        } else {
         res.redirect('/');
