@@ -1,0 +1,15 @@
+<header class="header">
+    <a href="/">
+        <img src="/img/logo.png" class="logo" /> Bill Box
+    </a>
+    <% if(user) { %>
+    <nav>
+        <ul class="main-nav">
+        <li><a href="/medicines" class="box-button">Products</a></li>
+        <li><a href="/doctors" class="box-button">Doctors</a></li>
+        <li><a href="/pres" class="box-button">Prescriptions</a></li>
+        <li><a href="/auth/signout" class="box-button box-button-filled">Signout</a></li>
+        </ul>
+    </nav>
+    <% } %>
+</header>

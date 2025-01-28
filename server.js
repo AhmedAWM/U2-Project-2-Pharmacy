@@ -43,18 +43,22 @@ mongoose
 
 // Routes and files
 app.use(passUserToView)
-
 app.use("/auth", authController);
 
+// Home page
 app.get("/", async(req, res) => {
     // This code makes sure that a signed-in user wont see the welcome page, 
     // since the welcome page is for guest users only.    
   try 
   {
-      const medicines = await Medicine.find();
-      const user = req.session.user;
+      if(req.session.user) {
+        const medicines = await Medicine.find();
+        const user = req.session.user;
 
-      res.render("home.ejs",{ medicines: medicines, user: user });
+        res.render("home.ejs",{ medicines: medicines, user: user });
+      } else {
+        res.render("../auth/signin.ejs", { user: null });
+      }
   } 
   catch (error) 
   {
