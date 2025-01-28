@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit product - Pill Box</title>
+
+    <!-- Adding style to the page -->
+    <%- include('../../views/partials/head') %>
+  </head>
+  <body>
+    <!-- Adding header to the page -->
+    <%- include('../../views/partials/header') %>
+    <main>
+      <section class="main-section">
+        <section class="general-input-container">
+          <form action="/medicines/edit/<%= medicine._id %>?_method=PUT" method="POST" class="general-input-form">
+              <h1 class="title">Edit product</h1>
+              <h2 class="subtitle">Please fill in information</h2>
+              <label for="commercialName">Commercial Name</label>
+              <input type="text" id="name" name="commercialName" class="input-field" value="<%= medicine.commercialName %>" required>
+
+              <label for="medicinName">Medical Name</label>
+              <input type="text" id="name" name="medicinName" class="input-field" value="<%= medicine.medicinName %>" required>
+
+              <label for="price">Price</label>
+              <input type="text" id="name" name="price" class="input-field" value="<%= medicine.price %>" required>
+
+              <label for="expiryDate">Expiry Date</label>
+              <input type="date" id="name" name="expiryDate" class="input-field" value="<%= medicine.expiryDate.toISOString().split('T')[0] %>" required>
+
+              <label for="image">Image</label>
+              <input type="text" id="email" name="image" class="input-field" value="<%= medicine.image %>" placeholder="https://" required>
+
+              <div>
+                <button class="signin-signup-button">Update</button>
+                <button type="reset" class="signin-signup-button">Clear</button>
+              </div>
+          </form>
+      </section>
+      </section>
+      
+    </main>
+  </body>
+</html>

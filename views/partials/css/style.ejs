@@ -1,0 +1,454 @@
+<style>
+    /*
+      Colors:
+      Main: #2a5db3
+      Main light: #4779ce
+      Secondary: #d7e1f1
+  
+      */
+  
+    /* HTML Elements */
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+    }
+  
+    html {
+      font-size: 62.5%;
+      overflow-x: hidden;
+    }
+  
+    body {
+      font-family: "Rubik", serif, system-ui;
+    }
+  
+    button {
+      cursor: pointer;
+    }
+  
+    /* Classes */
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 8.4rem;
+      padding: 0 4.8rem;
+      position: relative;
+      background-color: #d7e1f1;
+    }
+
+    .header a {
+      display: flex;
+      text-decoration: none;
+    }
+
+    .header-text {
+      margin: auto 1.4rem;
+      font-size: 2.4rem;
+      font-weight: bold;
+      color: #000;
+    }
+  
+    .main-nav {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 4.8rem;
+    }
+  
+    /* Hero */
+    .section-hero {
+      display: grid;
+      width: 75%;
+      margin: 0 auto;
+    }
+  
+    .hero {
+      width: 100%;
+      margin: 0 auto;
+      padding: 3.2rem;
+      gap: 9.6rem;
+      align-items: center;
+    }
+  
+    .hero-image {
+      width: 75%;
+      margin: auto;
+    }
+  
+    .error-404-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      align-items: center;
+      width: 40%;
+      margin: 12.8rem auto;
+      font-size: 1.4rem;
+    }
+  
+    .error-404-message {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  
+    .sad-mango-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  
+    /* Signin page */
+    .signin-container {
+      width: 75%;
+      margin: 0 auto;
+    }
+  
+    .signin-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin: 3.2rem;
+      padding: 2.4rem;
+      border: 0.1rem #d7e1f1 solid;
+      font-size: 1.2rem;
+    }
+  
+    .signin-form div {
+      align-self: center;
+    }
+  
+    .welcome-container {
+      align-content: center;
+    }
+  
+    .hero-home {
+      margin: 6.4rem auto 3.2rem auto;
+    }
+  
+    .hero-image-container {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    /* Medicines page */
+    .medicines-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.4rem;
+    }
+    .medicine-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.2rem;
+      min-height: 40rem;
+      width: 32rem;
+      padding: 1.2rem 0.6rem;
+      justify-content: center;
+      text-align: center;
+      border: #b3b3b3 0.3rem solid;
+      border-radius: 0.8rem;
+    }
+  
+    .medicine-item:hover {
+      border: #2a5db3 0.3rem solid;
+    }
+
+    .medicine-image {
+      height: 28rem;
+      align-content: center;
+    }
+  
+    .medicine-image img {
+      height: auto;
+      width: 28rem;
+    }
+  
+    .medicine-commercial-name {
+      font-size: 2.4rem;
+      font-weight: bold;
+    }
+
+    .medicine-medical-name {
+      font-size: 1.8rem;
+    }
+
+    .medicine-price {
+      align-self: center;
+      font-size: 1.4rem;
+    }
+
+    .medicine-expiry {
+      font-size: 1.2rem;
+    }
+  
+    .medicine-options {
+      display: flex;
+      gap: 1.4rem;
+      justify-self: center;
+      align-self: center;
+      margin-top: 1.2rem;
+    }
+
+    /* Doctors page */
+    .doctors-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.4rem;
+    }
+    .doctor-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.2rem;
+      min-height: 40rem;
+      width: 32rem;
+      padding: 1.2rem 0.6rem;
+      justify-content: center;
+      text-align: center;
+      border: #b3b3b3 0.3rem solid;
+      border-radius: 0.8rem;
+    }
+  
+    .doctor-item:hover {
+      border: #2a5db3 0.3rem solid;
+    }
+
+    .doctor-photo {
+      height: 28rem;
+      align-content: center;
+    }
+  
+    .doctor-photo img {
+      height: auto;
+      width: 28rem;
+    }
+  
+    .doctor-name {
+      font-size: 2.4rem;
+      font-weight: bold;
+    }
+
+    .doctor-specialty {
+      font-size: 1.8rem;
+    }
+  
+    .doctor-options {
+      display: flex;
+      gap: 1.4rem;
+      justify-self: center;
+      align-self: center;
+      margin-top: 1.2rem;
+    }
+
+    /* Prescriptions page */
+    .pres-items {
+      max-width: 75%;
+      margin: 2.4rem auto;
+    }
+
+    .pres-item {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      margin-bottom: 2.4rem;
+      width: 100%;
+      font-size: 1.6rem;
+      border: #b3b3b3 0.3rem solid;
+      border-radius: 0.8rem;
+    }
+
+    .pres-grid-item {
+      padding: 1.2rem 1.4rem;
+      border-bottom: #b3b3b3 0.1rem solid;
+    }
+
+    .pres-grid-item:nth-last-child(1) {
+      border-bottom: none;
+    }
+
+    .pres-title {
+      font-weight: 500;
+      border-right: #b3b3b3 0.1rem solid;
+    }
+  
+    .pres-item:hover {
+      border: #2a5db3 0.3rem solid;
+    }
+  
+    .pres-patient {
+      grid-column: 1 / -1;
+      font-size: 2.4rem;
+      font-weight: bold;
+      align-self: center;
+      text-align: center;
+      border-bottom: #b3b3b3 0.1rem solid;
+    }
+
+    .pres-doctor {
+      font-size: 1.8rem;
+    }
+
+    .pres-date {
+      font-size: 1.8rem;
+    }
+
+    .pres-note {
+      font-size: 1.8rem;
+    }
+  
+    .pres-options {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 1.4rem;
+      justify-self: center;
+      padding: 1.2rem 0;
+    }
+  
+    /* Reusables */
+    .main-section {
+      width: 75%;
+      margin: 0 auto;
+      padding: 4.8rem 2.4rem;
+    }
+  
+    .main-section-title {
+      margin: 3.2rem;
+      font-size: 2.4rem;
+    }
+  
+    .heading-primary {
+      font-size: 5.2rem;
+      line-height: 1.3;
+      margin-bottom: 3.2rem;
+    }
+  
+    .box-button {
+      font-size: 1.8rem;
+      text-decoration: none;
+      font-weight: 500;
+      color: #000;
+      padding: 1rem 3.2rem;
+      border: transparent 0.2rem solid;
+      border-radius: 10rem;
+      font-family: "Rubik", serif, system-ui;
+    }
+
+    .text-box {
+      overflow-y: scroll; /* Enable vertical scrolling */
+      resize: none; /* Disable resizing */
+      height: 8.4rem;
+    }
+  
+    .heading-description {
+      font-size: 2rem;
+      line-height: 1.6;
+      margin-bottom: 4.8rem;
+    }
+  
+    .box-button:hover {
+      color: #2a5db3;
+      border: #2a5db3 0.2rem solid;
+    }
+  
+    .box-button-filled, .box-text-filled {
+      padding: 1rem 3.2rem;
+      border-radius: 10rem;
+      color: #d7e1f1 !important;
+      background-color: #2a5db3 !important;
+      border: transparent 0.2rem solid;
+      font-family: inherit;
+    }
+  
+    .box-button-filled:hover {
+      border: #d7e1f1 0.2rem solid !important;
+    }
+  
+    .options-button {
+      font-size: 1.8rem;
+      border: none;
+      padding: 1rem 3.2rem;
+    }
+  
+    .logo {
+      height: 5.2rem;
+      align-self: self-start;
+    }
+  
+    .sad-mango {
+      height: 25.6rem;
+    }
+  
+    .input-field {
+      padding: 0.6rem;
+      margin-bottom: 2.4rem;
+      outline: none;
+      border: 1px solid #d7e1f1;
+    }
+  
+    .title {
+      font-size: 2.4rem;
+    }
+  
+    .subtitle {
+      margin: 1.4rem 0 1rem 0;
+      color: #828282;
+      font-size: 1.2rem;
+      font-weight: normal;
+    }
+  
+    .general-input-container {
+      width: 50%;
+      margin: 0 auto;
+    }
+  
+    .general-input-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin: 6.4rem 3.2rem;
+      padding: 2.4rem;
+      border: 0.1rem #d7e1f1 solid;
+      font-size: 1.2rem;
+    }
+  
+    .general-input-form div {
+      align-self: center;
+    }
+  
+    .signin-or-signup {
+      margin: 1.4rem 0 0 0;
+    }
+  
+    .signin-or-signup a {
+      font-weight: 500;
+      color: #2a5db3;
+      text-decoration: none;
+    }
+  
+    .signin-or-signup a:hover {
+      text-decoration: underline;
+    }
+  
+    .signin-signup-button {
+      padding: 0.6rem 3.2rem;
+      font-family: "Rubik", serif, system-ui;
+      background-color: #2a5db3;
+      color: #fff;
+      border: none;
+    }
+
+    .no-data {
+      font-size: 2.4rem;
+      font-weight: 500;
+      text-align: center;
+    }
+  
+    /* Grids sizes */
+    .grid--c-1-1 {
+      grid-template-columns: 1fr 1fr;
+    }
+  </style>

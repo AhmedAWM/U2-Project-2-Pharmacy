@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prescriptions - Pill Box</title>
+
+    <!-- Adding style to the page -->
+    <%- include('../../views/partials/head') %>
+  </head>
+  <body>
+    <!-- Adding header to the page -->
+    <%- include('../partials/header') %>
+    <main>
+        <section class="main-section">
+            <% if(user.isDoctor) { %>
+                <center><a href="/pres/new" class="box-button box-button-filled">Add new product</a></center>
+            <% } %>
+          <h1 class="main-section-title"><% if(!user.isDoctor) { %>My <% } %>Prescriptions</h1>
+        
+          <div class="pres-items">
+            
+            <% if(pres.length !== 0) {
+                pres.forEach((pre) => { %>
+                    <div class="pres-item">
+                        <p class="pres-patient pres-grid-item"><%= pre.patient %></p>
+            
+                        <p class="pres-title pres-grid-item">Doctor name:</p>
+                        <p class="pres-grid-item">Dr. <%= pre.doctor %></p>
+            
+                        <p class="pres-title pres-grid-item">Issue date:</p>
+                        <p class="pres-grid-item"><%= pre.issueDate %></p>
+            
+                        <p class="pres-title pres-grid-item">Instructions:</p>
+                        <p class="pres-grid-item"><b><%= pre.medicine %>: </b> <%= pre.instructions %></p>
+
+                        <% if(user.isDoctor) { %>
+                        <div class="pres-options">
+                          <form action="/pres/<%=pre.id%>/delete?_method=DELETE" method="POST">
+                              <button class="options-button">Delete</button>
+                          </form>
+                        </div>
+                        <% } %>
+                    
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p class="no-data">No Prescriptions</p>
+            <% } %>
+        </div>
+        
+        </section>
+      </main>
+  </body>
+</html>

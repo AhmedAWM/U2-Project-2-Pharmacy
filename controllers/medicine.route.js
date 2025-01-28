@@ -2,18 +2,17 @@ const router = require("express").Router();
 const Medicine = require("../models/medicine");
 
 // View all medicines
-router.get("/", async (req, res) => 
-{
-    try 
-    {
-        const medicines = await Medicine.find();
-        const user = req.session.user;
+router.get("/", async (req, res) => {
+    try {
+        if(req.session.user) {
+            const medicines = await Medicine.find();
+            const user = req.session.user;
 
-        console.log(medicines);
-        res.render("home.ejs",{ medicines: medicines, user: user });
-    } 
-    catch (error) 
-    {
+            res.render("medicines/home.ejs", { medicines: medicines, user: user });
+        } else {
+            res.redirect("/");
+        }
+    } catch (error) {
         console.log(error);
         res.status(500).send("Server Error");
     }
@@ -21,9 +20,7 @@ router.get("/", async (req, res) =>
 
 // If isDoctor, go to create new medicine page
 router.get("/new", (req, res) => {
-    user = req.session.user;
-
-    if(user) {
+    if(req.session.user && req.session.user.isDoctor) {
         res.render("medicines/new.ejs");
     } else {
         res.redirect('/');
@@ -33,8 +30,7 @@ router.get("/new", (req, res) => {
 // Create new medicine
 router.post('/new', async (req, res) => {
     try {
-        const user = req.session.user;
-        if(user) {
+        if(req.session.user && req.session.user.isDoctor) {
             const newMed = req.body;
 
             await Medicine.create(newMed);
@@ -48,58 +44,47 @@ router.post('/new', async (req, res) => {
         console.log(error);
     }
 });
-// Sharifas tring to show the details of the medicen 
 
-router.get("/:medicineId", async (req, res) => 
-{
-    try {
-        //  sharifa tring to Find the medicine by its ID and populate owner information
-        const foundMedicine = await Medicine.findById(req.params.medicineId);
-        // i will put extra metode which shows if the pationt have some favorit medicine
-    //  const userHasFavorited = foundMedicine.favoritedByUser.some(user => user.equals(req.session.user._id));
-
-    //     console.log(foundMedicine);
-    //     res.render("medicine/show.ejs", { medicine: foundMedicine, userHasFavorited: userHasFavorited });
-    } 
-    catch (error) 
-    {
-        console.log(error);
-        res.status(500).send("Error fetching medicine details");
+// Edit medicine page if user isDoctor
+router.get('/:id/edit', async (req, res) => {
+    if(req.session.user && req.session.user.isDoctor) {
+        const medicine = await Medicine.findById(req.params.id);
+        res.render('medicines/edit.ejs', { medicine: medicine });
+    } else {
+        res.redirect('/medicines');
     }
 });
 
-// // iam tring to show if there is a medicines marked as "favorite" by the logged-in user
-// router.get("/:userId/favorites", async (req, res) => 
-// {
-//     try 
-//     {
-//         //  Fetch all medicines that are favorited by the user
-//      const favoriteMedicines = await Medicine.find({ favoritedByUser: req.params.userId }).populate("owner");
+// Edit medicine
+router.put('/edit/:id', async (req, res) => {
+    try {
+       if(req.session.user && req.session.user.isDoctor) {
+        const medicine = await Medicine.findById(req.params.id);
+        const editedMedicine = req.body;
 
-//         console.log(favoriteMedicines);
-//         res.render("medicine/favorites.ejs", { medicines: favoriteMedicines });
-//     }
-//      catch (error) 
-//     {
-//         console.log(error);
-//         res.status(500).send("Error fetching favorite medicines");
-//     }
-// });
-// // i will use userId to show all medicines marked as favrites by the logged-in user
-// router.get("/favorites", async (req, res) => 
-// {
-//     try {
-//         const userId = req.session.user._id;
+        await Medicine.findByIdAndUpdate(req.params.id, req.body);
         
-//         // iam tring to Fetch all medicines that are favorited by the user
-//         const favoriteMedicines = await Medicine.find({ favoritedByUser: userId }).populate("owner");
+        res.redirect('/medicines');
+       } else {
+        res.redirect('/');
+       }
+    } catch (error) {
+        console.log(error);
+    }
+});
 
-//         res.render("medicine/favorites.ejs", { medicines: favoriteMedicines });
-//     } catch (error)
-//     {
-//         console.log(error);
-//         res.status(500).send("Error fetching favorite medicines");
-//     }
-// });
+// Delete medicine if user isDoctor
+router.delete('/:id/delete', async (req, res) => {
+    try {
+        if(req.session.user && req.session.user.isDoctor) {
+            await Medicine.findByIdAndDelete(req.params.id);
+            res.redirect('/medicines');
+        } else {
+            res.redirect('/');
+        }
+    } catch (e) {
+        console.log(e);
+    }
+});
 
 module.exports = router;

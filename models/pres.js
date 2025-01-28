@@ -11,12 +11,8 @@ const prescriptionSchema = new mongoose.Schema
   },
   medications: 
   {
-    type: String, 
-    required: true,
-  },
-  dosage: 
-  {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Medicine',
     required: true,
   },
   doctor: 
@@ -30,7 +26,7 @@ const prescriptionSchema = new mongoose.Schema
     type: Date,
     default: Date.now,
   },
-  instructionsForThePation: 
+  instructions: 
   {
     type: String,
   },
