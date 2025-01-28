@@ -232,6 +232,69 @@
       align-self: center;
       margin-top: 1.2rem;
     }
+
+    /* Prescriptions page */
+    .pres-items {
+      max-width: 75%;
+      margin: 2.4rem auto;
+    }
+
+    .pres-item {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      margin-bottom: 2.4rem;
+      width: 100%;
+      font-size: 1.6rem;
+      border: #b3b3b3 0.3rem solid;
+      border-radius: 0.8rem;
+    }
+
+    .pres-grid-item {
+      padding: 1.2rem 1.4rem;
+      border-bottom: #b3b3b3 0.1rem solid;
+    }
+
+    .pres-grid-item:nth-last-child(1) {
+      border-bottom: none;
+    }
+
+    .pres-title {
+      font-weight: 500;
+      border-right: #b3b3b3 0.1rem solid;
+    }
+  
+    .pres-item:hover {
+      border: #2a5db3 0.3rem solid;
+    }
+  
+    .pres-patient {
+      grid-column: 1 / -1;
+      font-size: 2.4rem;
+      font-weight: bold;
+      align-self: center;
+      text-align: center;
+      border-bottom: #b3b3b3 0.1rem solid;
+    }
+
+    .pres-doctor {
+      font-size: 1.8rem;
+    }
+
+    .pres-date {
+      font-size: 1.8rem;
+    }
+
+    .pres-note {
+      font-size: 1.8rem;
+    }
+  
+    .pres-options {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 1.4rem;
+      justify-self: center;
+      padding: 1.2rem 0;
+    }
   
     /* Reusables */
     .main-section {
@@ -260,6 +323,12 @@
       border: transparent 0.2rem solid;
       border-radius: 10rem;
       font-family: "Rubik", serif, system-ui;
+    }
+
+    .text-box {
+      overflow-y: scroll; /* Enable vertical scrolling */
+      resize: none; /* Disable resizing */
+      height: 8.4rem;
     }
   
     .heading-description {
@@ -358,6 +427,12 @@
       background-color: #2a5db3;
       color: #fff;
       border: none;
+    }
+
+    .no-data {
+      font-size: 2.4rem;
+      font-weight: 500;
+      text-align: center;
     }
   
     /* Grids sizes */

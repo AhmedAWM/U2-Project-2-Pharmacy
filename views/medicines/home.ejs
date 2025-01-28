@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flavors Unleashed: Your Ultimate Cookbook</title>
+    <title>All products - Pill Box</title>
 
     <!-- Adding style to the page -->
     <%- include('../../views/partials/head') %>
@@ -18,7 +18,7 @@
             <% } %>
           <h1 class="main-section-title">Products</h1>
         
-            <% if(medicines) { %>
+            <% if(medicines.length !== 0) { %>
                 <div class="medicines-items">
                 <% medicines.forEach((medicine) => { %>
                 <div class="medicine-item">
@@ -51,7 +51,7 @@
                 
             </div>
               <% } else { %>
-                <p>Nothing to show</p>
+                <p class="no-data">No Products</p>
               <% } %>
         
         </section>
