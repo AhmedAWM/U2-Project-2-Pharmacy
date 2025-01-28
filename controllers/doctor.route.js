@@ -7,8 +7,7 @@ router.get("/", async (req, res) => {
     try {
         const doctors = await Doctor.find({ isDoctor: true });
         res.render("doctors/home.ejs", { doctors });
-    } 
-    catch (error) {
+    } catch (error) {
         console.error(error);
     }
 });
@@ -84,5 +83,4 @@ router.delete('/:id/delete', async (req, res) => {
         console.log(e);
     }
 });
-
 module.exports = router;
