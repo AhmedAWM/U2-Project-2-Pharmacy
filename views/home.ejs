@@ -11,10 +11,12 @@
     <!-- Adding style to the page -->
     <%- include('../views/partials/head') %>
   </head>
-  <body>
+  <body>    
+
+    <div class="loader"></div>
+
     <!-- Adding header to the page -->
     <%- include('./partials/header') %>
-    
     <main>
       <section class="section-hero grid--c-1-1 hero-home">
         <div class="hero welcome-container">
@@ -34,7 +36,22 @@
     <!-- Adding header to the page -->
     <%- include('./partials/footer') %>
     
+    <script>
+        /* This code makes the loader disappear after the page is loaded,
+         And ensures that the loader is displayed after at least 500ms,
+         to make sure the loader doesn't disappear too quickly.*/
+        
+         window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader");
+
+  loader.classList.add("loader--hidden");
+
+  loader.addEventListener("transitionend", () => {
+    document.body.removeChild(loader);
+  });
+});
     
+        </script>
    
   </body>
 </html>

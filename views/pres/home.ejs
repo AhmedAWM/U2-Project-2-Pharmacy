@@ -11,10 +11,12 @@
     <!-- Adding style to the page -->
     <%- include('../../views/partials/head') %>
   </head>
-  <body>
+  <body>    
+    
+    <div class="loader"></div>
+
     <!-- Adding header to the page -->
     <%- include('../partials/header') %>
-    <div class="loader"></div>
     <main>
         <section class="main-section">
             <% if(user.isDoctor) { %>
