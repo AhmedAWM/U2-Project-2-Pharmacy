@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All products - Pill Box</title>
 
+<!-- favicon -->
+<link type="image/png" sizes="32x32" rel="icon" href="/img/favicon.ico">
+
     <!-- Adding style to the page -->
     <%- include('../../views/partials/head') %>
   </head>
   <body>
+    
+    <div class="loader"></div>
+
     <!-- Adding header to the page -->
     <%- include('../partials/header') %>
     <main>
@@ -64,5 +70,21 @@
         const currentPage = document.querySelector(".medicines-link");
         currentPage.classList.add("selected-page");
       </script>
+       <script>
+        /* This code makes the loader disappear after the page is loaded,
+         And ensures that the loader is displayed after at least 500ms,
+         to make sure the loader doesn't disappear too quickly.*/
+        
+         window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader");
+
+  loader.classList.add("loader--hidden");
+
+  loader.addEventListener("transitionend", () => {
+    document.body.removeChild(loader);
+  });
+});
+    
+        </script>
   </body>
 </html>
