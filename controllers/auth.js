@@ -25,7 +25,8 @@ router.post("/signin", async (req, res) =>
 
     if (!userExists) 
     {
-      res.send("Login failed! User does not Exists");
+      // Alert
+      res.render('../auth/login-failed.ejs', { login: 'Login failed! User does not Exists.' });
       return;
     }
 
@@ -37,7 +38,7 @@ router.post("/signin", async (req, res) =>
 
     if (!signinPassword) 
     {
-      res.send("Login failed! Password is incorrect");
+      res.render('../auth/login-failed.ejs', { login: 'Login failed! Password is incorrect.' });
       return;
     }
 
@@ -80,14 +81,14 @@ router.post("/signup", async (req, res) =>
     if (signupInfo.password !== signupInfo.confirmPassword) 
     {
       // Alert
-      res.send("Passwords do not match!");
+      res.render('l../auth/ogin-failed.ejs', { login: 'Passwords do not match!' });
       return;
     }
 
     // Check if user exists
     if (userExists) 
     {
-      res.send("User already exists!");
+      res.render('../auth/login-failed.ejs', { login: 'User already exists!' });
       // Alert
       return;
     }

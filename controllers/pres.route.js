@@ -37,11 +37,16 @@ router.get("/", async (req, res) => {
 
 // If isDoctor, go to create new prescrition page
 router.get("/new", async (req, res) => {
-    if(req.session.user && req.session.user.isDoctor) {
-        const patients = await User.find({ isDoctor: false }); // Retreive all patients
-        const medicines = await Medicine.find();
+    if(req.session.user) {
+        if(req.session.user.isDoctor) {
+            const patients = await User.find({ isDoctor: false }); // Retreive all patients
+            const medicines = await Medicine.find();
 
-        res.render("pres/new.ejs", { patients: patients, medicines: medicines });
+            res.render("pres/new.ejs", { patients: patients, medicines: medicines });
+        } else {
+            res.redirect("/pres");
+        }
+        
     } else {
         res.redirect('/');
     }
@@ -50,12 +55,14 @@ router.get("/new", async (req, res) => {
 // Create new prescription
 router.post('/new', async (req, res) => {
     try {
-        if(req.session.user && req.session.user.isDoctor) {
-            const newPres = req.body;
+        if(req.session.user) {
+            if(eq.session.user.isDoctor) {
+                const newPres = req.body;
 
-            newPres.doctor = req.session.user._id; // Doctor's ID
+                newPres.doctor = req.session.user._id; // Doctor's ID
 
-            await Pres.create(newPres);
+                await Pres.create(newPres);
+            }
 
             res.redirect('/pres');
         } else {
@@ -70,8 +77,11 @@ router.post('/new', async (req, res) => {
 // Delete prescription if user isDoctor
 router.delete('/:id/delete', async (req, res) => {
     try {
-        if(req.session.user && req.session.user.isDoctor) {
-            await Pres.findByIdAndDelete(req.params.id);
+        if(req.session.user) {
+            if(req.session.user.isDoctor) {
+                await Pres.findByIdAndDelete(req.params.id);
+            }
+            
             res.redirect('/pres');
         } else {
             res.redirect('/');

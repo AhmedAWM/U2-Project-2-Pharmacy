@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error 401 (Login error)</title>
+
+    <!-- Adding style to the page -->
+    <%- include('../views/partials/head') %>
+  </head>
+  <body>
+    <main>
+      <section class="error-404-container">
+        <div class="error-404-message">
+          <div>
+            <a href="/"><img src="/img/logo.png" class="logo" /></a>
+          </div>
+          <div>
+            <p><b>401.</b> <span style="color: gray">Login error.</span></p>
+          </div>
+          <div>
+            <%= login %> <a class="error-link" href="/">Go back to login page</a>.
+          </div>
+        </div>
+        <div class="sad-mango-container">
+          <p><img src="/img/sad-pill.svg" class="sad-mango" /></p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -14,7 +14,7 @@
     <main>
       <section class="section-hero grid--c-1-1 hero-home">
         <div class="hero welcome-container">
-          <h1 class="heading-primary">Welcome to Pill Box!</h1>
+          <h1 class="heading-primary">Welcome to Pill Box <% if(user.isDoctor) { %> Dr. <% } %><%= user.name %>!</h1>
           <p class="heading-description">
             Your trusted pharmacy for quality medications, health products, and expert care—all in one place.
           </p>
