@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error 404 (Not found)</title>
+
+    <!-- Adding style to the page -->
+    <%- include('../views/partials/head') %>
+  </head>
+  <body>
+    <main>
+      <section class="error-404-container">
+        <div class="error-404-message">
+          <div>
+            <a href="/"><img src="/img/logo.png" class="logo" /></a>
+          </div>
+          <div>
+            <p><b>404.</b> <span style="color: gray">That's an error.</span></p>
+          </div>
+          <div>
+            The requested URL <%= route %> was not found on this server.
+            <span style="color: gray">That's all we know.</span>
+          </div>
+        </div>
+        <div class="sad-mango-container">
+          <p><img src="/img/sad-pill.svg" class="sad-mango" /></p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -20,8 +20,12 @@ router.get("/", async (req, res) => {
 
 // If isDoctor, go to create new medicine page
 router.get("/new", (req, res) => {
-    if(req.session.user && req.session.user.isDoctor) {
-        res.render("medicines/new.ejs");
+    if(req.session.user) {
+        if(req.session.user.isDoctor) { 
+            res.render("medicines/new.ejs");
+        } else {
+            res.redirect('/medicines');
+        }
     } else {
         res.redirect('/');
     }
@@ -30,12 +34,16 @@ router.get("/new", (req, res) => {
 // Create new medicine
 router.post('/new', async (req, res) => {
     try {
-        if(req.session.user && req.session.user.isDoctor) {
-            const newMed = req.body;
+        if(req.session.user) {
+            if(req.session.user.isDoctor) {
+                const newMed = req.body;
 
-            await Medicine.create(newMed);
+                await Medicine.create(newMed);
 
-            res.redirect('/');
+                res.redirect('/medicines');
+            } else {
+                res.redirect('/medicines');
+            }
         } else {
             res.redirect('/');
         }
@@ -47,23 +55,28 @@ router.post('/new', async (req, res) => {
 
 // Edit medicine page if user isDoctor
 router.get('/:id/edit', async (req, res) => {
-    if(req.session.user && req.session.user.isDoctor) {
-        const medicine = await Medicine.findById(req.params.id);
-        res.render('medicines/edit.ejs', { medicine: medicine });
+    if(req.session.user) {
+        if(req.session.user.isDoctor) {
+            const medicine = await Medicine.findById(req.params.id);
+            res.render('medicines/edit.ejs', { medicine: medicine });
+        } else {
+            res.redirect('/medicines');
+        }
     } else {
-        res.redirect('/medicines');
+        res.redirect('/');
     }
 });
 
 // Edit medicine
 router.put('/edit/:id', async (req, res) => {
     try {
-       if(req.session.user && req.session.user.isDoctor) {
-        const medicine = await Medicine.findById(req.params.id);
-        const editedMedicine = req.body;
+       if(req.session.user) {
+        if(req.session.user.isDoctor) {
+            const medicine = await Medicine.findById(req.params.id);
+            const editedMedicine = req.body;
+            await Medicine.findByIdAndUpdate(req.params.id, req.body);
+        }
 
-        await Medicine.findByIdAndUpdate(req.params.id, req.body);
-        
         res.redirect('/medicines');
        } else {
         res.redirect('/');
@@ -76,8 +89,11 @@ router.put('/edit/:id', async (req, res) => {
 // Delete medicine if user isDoctor
 router.delete('/:id/delete', async (req, res) => {
     try {
-        if(req.session.user && req.session.user.isDoctor) {
-            await Medicine.findByIdAndDelete(req.params.id);
+        if(req.session.user) {
+            if(req.session.user.isDoctor) {
+                await Medicine.findByIdAndDelete(req.params.id);
+            }
+            
             res.redirect('/medicines');
         } else {
             res.redirect('/');

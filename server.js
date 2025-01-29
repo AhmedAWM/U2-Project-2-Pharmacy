@@ -70,6 +70,11 @@ app.get("/", async(req, res) => {
   }
 });
 
+// If wrong path, redirect to error 404 page
+app.use((request, response) => {
+  response.render("404.ejs", { route: request.originalUrl });
+});
+
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });
