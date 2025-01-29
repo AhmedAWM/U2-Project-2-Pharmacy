@@ -56,7 +56,7 @@ router.get("/new", async (req, res) => {
 router.post('/new', async (req, res) => {
     try {
         if(req.session.user) {
-            if(eq.session.user.isDoctor) {
+            if(req.session.user.isDoctor) {
                 const newPres = req.body;
 
                 newPres.doctor = req.session.user._id; // Doctor's ID
