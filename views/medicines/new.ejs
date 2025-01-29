@@ -39,7 +39,14 @@
           </form>
       </section>
       </section>
-      
     </main>
+
+    <%- include('../partials/footer') %>
+
+    <!-- Highliging current page in Navbar  -->
+    <script>
+      const currentPage = document.querySelector(".medicines-link");
+      currentPage.classList.add("selected-page");
+    </script>
   </body>
 </html>

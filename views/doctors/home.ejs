@@ -47,8 +47,15 @@
               <% } else { %>
                 <p>Nothing to show</p>
               <% } %>
-        
         </section>
       </main>
+
+      <%- include('../partials/footer') %>
+
+      <!-- Highliging current page in Navbar  -->
+      <script>
+        const currentPage = document.querySelector(".doctors-link");
+        currentPage.classList.add("selected-page");
+      </script>
   </body>
 </html>

@@ -45,5 +45,13 @@
       </section>
       </section>
     </main>
+
+    <%- include('../partials/footer') %>
+    
+    <!-- Highliging current page in Navbar  -->
+    <script>
+      const currentPage = document.querySelector(".doctors-link");
+      currentPage.classList.add("selected-page");
+    </script>
   </body>
 </html>
