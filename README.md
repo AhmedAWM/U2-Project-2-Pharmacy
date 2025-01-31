@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="./public/readme-styles.css">
+
 ![App Screenshot](./public/img/pillbox-img.png)
 
 <br>
@@ -32,23 +34,6 @@ Also, the pharmacy has two types of users:
 
 
 <hr>
-<style>
-        @media (max-width: 576px) {       
-        ul {
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;  
-        }
-        li {            
-            margin-top: 10px;
-            margin-bottom: 10px;
-            width: 100%;                     
-        }
-       }
-    a:hover {
-        cursor: pointer;
-    }
-</style>
 
 <ul style="margin-top: 40px; margin-bottom: 40px; display: flex; align-items: center; justify-content: space-evenly;">
     <li style="display: flex; align-items: center;">
