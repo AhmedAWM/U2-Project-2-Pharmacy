@@ -1,3 +1,21 @@
+.main-ul {
+    margin-top: 40px; 
+    margin-bottom: 40px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-evenly;
+}
+
+.main-li {
+    display: flex; 
+    align-items: center;
+}
+
+.pfp {
+    margin-right: 10px; 
+    border-radius: 50%;
+}
+
 @media (max-width: 576px) {       
     ul {
         flex-direction: column;
@@ -12,4 +30,12 @@
    }
 a:hover {
     cursor: pointer;
+}
+
+.screenshot {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 12.5px;
 }
