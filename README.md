@@ -1,6 +1,8 @@
-![App Screenshot](./public/img/pillbox-img.png)
+<link rel="stylesheet" href="./public/readme-styles.css">
 
-<br>
+<img src="./public/img/pillbox-img.png" class="screenshot"/>
+
+<br>   
 <br>
 
 **[Pill Box™](https://pill-box.onrender.com/)** <br>
@@ -32,35 +34,18 @@ Also, the pharmacy has two types of users:
 
 
 <hr>
-<style>
-        @media (max-width: 576px) {       
-        ul {
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;  
-        }
-        li {            
-            margin-top: 10px;
-            margin-bottom: 10px;
-            width: 100%;                     
-        }
-       }
-    a:hover {
-        cursor: pointer;
-    }
-</style>
 
-<ul style="margin-top: 40px; margin-bottom: 40px; display: flex; align-items: center; justify-content: space-evenly;">
-    <li style="display: flex; align-items: center;">
-        <img src="https://github.com/AhmedAWM.png" width="40px;" style="margin-right: 10px; border-radius: 50%"/>
+<ul class="main-ul">
+    <li class="main-li">
+        <img src="https://github.com/AhmedAWM.png" width="40px;" class="pfp" />
         <a href="https://github.com/AhmedAWM">Ahmed Abdulwahab</a>
     </li>
-    <li style="display: flex; align-items: center;">
-        <img src="https://github.com/sedratiaziz.png" width="40px;" style="margin-right: 10px; border-radius: 50%"/>
+    <li class="main-li">
+        <img src="https://github.com/sedratiaziz.png" width="40px;" class="pfp" />
         <a href="https://github.com/sedratiaziz">Abdulaziz Sedrati</a>
     </li>
-    <li style="display: flex; align-items: center;">
-        <img src="https://github.com/sharifaaldoseri.png" width="40px;" style="margin-right: 10px; border-radius: 50%"/>
+    <li class="main-li">
+        <img src="https://github.com/sharifaaldoseri.png" width="40px;" class="pfp" />
         <a href="https://github.com/sharifaaldoseri">Sharifa Al-Doseri</a>
     </li>
     
